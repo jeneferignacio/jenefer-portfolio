@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenefer's Portfolio</title>
+    <style>
+        body {
+            background-color: #1a1518;
+            color: #fce4ec;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .gif-banner {
+            width: 100%;
+            height: 300px; 
+            background-image: url('homepage-banner.gif'); 
+            background-size: cover; 
+            background-position: center 60%;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px 20px 20px;
+        }
+
+        .placeholder-title {
+            font-size: 2.8rem;
+            color: #ff80bf;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #b0a4af;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            background-color: #231c21;
+            color: #ffb3d1;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 1px solid #ff80bf;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ff80bf;
+            color: #1a1518;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            border-bottom: 1px solid #2d242b;
+        }
+
+        section h2, .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff80bf;
+            margin-bottom: 15px;
+            
+            border-bottom: none;
+            text-decoration: none;
+            padding-bottom: 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: #231c21;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #3d3039;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            background-color: #ffb3d1;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1518;
+            font-size: 0.9rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .notion-card {
+            background-color: #1a1417;
+            border: 1px solid #4a333b;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .notion-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff80bf;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 140px; 
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-title {
+            padding: 15px;
+            color: #fce4ec;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .about-flex-wrapper {
+            display: flex;
+            flex-direction: row; 
+            align-items: center; 
+            gap: 40px; 
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            border-bottom: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            text-decoration: none;
+            transform: scale(1.15); 
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            
+            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(101%) contrast(101%);
+            
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+
+        .about-text {
+            color: #fce4ec; 
+            font-size: 1.15rem; 
+            line-height: 1.8; 
+            margin-bottom: 25px;
+            font-weight: 400; 
+        }
+
+        .bubble-greeting {
+            color: #ff80bf;  
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .profile-pic {
+            width: 300px;  /* Increased to match the height of your text and icons */
+            height: 300px; /* Keeps it square so the frame scales evenly */
+            flex-shrink: 0;
+            position: relative;
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: -20px;
+        }
+
+        .profile-pic img {
+            width: 110%;
+            height: 110%;
+            object-fit: contain;
+        }
+
+
+        .header-logo {
+            text-align: center;
+            width: 100%;
+        }
+
+        .header-logo img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            display: inline-block; 
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="gif-banner"></div>
+    <header id="home">
+        <div class="header-logo" style="text-align: center;">
+            <img src="font.png" alt="Jenefer's Portfolio" style="max-width: 400px; width: 100%; height: auto; display: inline-block; transform: translateX(-26px);">
+        </div>
+        <p class="subtitle">welcome to my digital portfolio!</p>
+
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#portfolio">Dashboard</a>
+        </nav>
+    </header>
+
+   <section id="about">
+        <div class="about-container">
+            <!-- Flex wrapper to keep profile picture and text side-by-side -->
+            <div class="about-flex-wrapper">
+                <!-- Profile Picture Box -->
+                <div class="profile-pic">
+                    <img src="profile.png" alt="Profile">
+                </div>
+
+                <!-- Text Content -->
+                <div class="about-text-content">
+                    <h1 class="bubble-greeting">Hello! I am Jenefer! ❀</h1>
+                    <p class="about-text">
+                        I am a 3rd-year student at Cavite State University - Silang Campus. 
+                        I'm also an aspiring game developer, and I love creating my own characters through digital art as well! 
+                        I chose Computer Science in the hopes of combining my interests in games with my creative passions to build interactive worlds and characters.
+                    </p>
+
+                    <!-- Social Media Icons Links -->
+                    <div class="social-icons">
+                        <a href="https://github.com/jeneferignacio" target="_blank" title="GitHub">
+                            <img src="github.svg" alt="GitHub">
+                        </a>
+                        <a href="https://www.facebook.com/jjnfrz" target="_blank" title="Facebook">
+                            <img src="facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/_jjnfr.zip/" target="_blank" title="Instagram">
+                            <img src="instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jenefer.ignacio@cvsu.edu.ph" target="_blank" title="Email Me">
+                            <img src="gmail.svg" alt="Gmail">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio Dashboard! ❀ </h2>
+        <p class="subtitle">Click a folder to view my class records and documents.</p>
+        
+        <div class="grid-container">
+            <a href="activities.html" class="notion-card">
+                <img src="gif1.gif" alt="Activity Banner" class="card-img">
+                <div class="card-title">౨ৎ Activities</div>
+            </a>
+
+            <a href="quizzes.html" class="notion-card">
+                <img src="gif2.gif" alt="Quiz Banner" class="card-img">
+                <div class="card-title">౨ৎ Quizzes</div>
+            </a>
+
+            <a href="exams.html" class="notion-card">
+                <img src="gif3.gif" alt="Exam Banner" class="card-img">
+                <div class="card-title">౨ৎ Exams</div>
+            </a>
+
+            <a href="projects.html" class="notion-card">
+                <img src="gif4.gif" alt="Project Banner" class="card-img">
+                <div class="card-title">౨ৎ Projects</div>
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>
