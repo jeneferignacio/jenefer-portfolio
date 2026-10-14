@@ -24,13 +24,20 @@
 
         header {
             text-align: center;
-            padding: 30px 20px 20px 20px;
+            padding: 30px 20px 20px;
         }
 
-        .placeholder-title {
-            font-size: 2.8rem;
-            color: #ff80bf;
-            margin-bottom: 5px;
+        .header-logo {
+            text-align: center;
+            width: 100%;
+        }
+
+        .header-logo img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            display: inline-block; 
+            transform: translateX(-26px);
         }
 
         .subtitle {
@@ -43,7 +50,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         nav a {
@@ -66,41 +73,83 @@
             padding: 50px 20px;
             max-width: 900px;
             margin: 0 auto;
+        }
+
+        /* Divider lines above each section */
+        #about {
+            border-top: 1px solid #2d242b;
             border-bottom: 1px solid #2d242b;
         }
 
-        section h2, .section-title {
+        section h2 {
             font-size: 1.8rem;
             font-weight: bold;
             color: #ff80bf;
             margin-bottom: 15px;
-            
-            border-bottom: none;
-            text-decoration: none;
-            padding-bottom: 0;
         }
 
-        .about-content {
+        .about-flex-wrapper {
             display: flex;
-            align-items: center;
-            gap: 30px;
-            background-color: #231c21;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #3d3039;
+            flex-direction: row; 
+            align-items: center; 
+            gap: 40px; 
         }
 
         .profile-pic {
-            width: 150px;
-            height: 150px;
-            background-color: #ffb3d1;
-            border-radius: 50%;
+            width: 300px;  
+            height: 300px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1a1518;
-            font-size: 0.9rem;
+            margin-right: -20px;
+        }
+
+        .profile-pic img {
+            width: 110%;
+            height: 110%;
+            object-fit: contain;
+        }
+
+        .bubble-greeting {
+            color: #ff80bf;  
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .about-text {
+            color: #fce4ec; 
+            font-size: 1.15rem; 
+            line-height: 1.8; 
+            margin-bottom: 25px;
+            font-weight: 400; 
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(101%) contrast(101%);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.15);
+            opacity: 0.8;
         }
 
         .grid-container {
@@ -140,103 +189,25 @@
             font-size: 1.1rem;
         }
 
-        .about-flex-wrapper {
-            display: flex;
-            flex-direction: row; 
-            align-items: center; 
-            gap: 40px; 
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .social-icons a {
-            text-decoration: none;
-            border-bottom: none;
-            display: inline-block;
-            transition: transform 0.2s ease;
-        }
-
-        .social-icons a:hover {
-            text-decoration: none;
-            transform: scale(1.15); 
-        }
-
-        .social-icons img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            
-            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(101%) contrast(101%);
-            
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .social-icons a:hover img {
-            transform: scale(1.15);
-            opacity: 0.8;
-        }
-
-        .about-text {
-            color: #fce4ec; 
-            font-size: 1.15rem; 
-            line-height: 1.8; 
-            margin-bottom: 25px;
-            font-weight: 400; 
-        }
-
-        .bubble-greeting {
-            color: #ff80bf;  
-            font-size: 1.8rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .profile-pic {
-            width: 300px;  
-            height: 300px;
-            flex-shrink: 0;
-            position: relative;
-            background-color: transparent;
-            border: none;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: -20px;
-        }
-
-        .profile-pic img {
-            width: 110%;
-            height: 110%;
-            object-fit: contain;
-        }
-
-
-        .header-logo {
+        .page-footer {
             text-align: center;
-            width: 100%;
-        }
-
-        .header-logo img {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            display: inline-block; 
+            color: #b0a4af;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid #2d242b;
         }
     </style>
-
 </head>
 <body>
 
     <div class="gif-banner"></div>
+    
     <header id="home">
-        <div class="header-logo" style="text-align: center;">
-            <img src="font.png" alt="Jenefer's Portfolio" style="max-width: 400px; width: 100%; height: auto; display: inline-block; transform: translateX(-26px);">
+        <div class="header-logo">
+            <img src="font.png" alt="Jenefer's Portfolio">
         </div>
         <p class="subtitle">Welcome to my digital portfolio!</p>
 
@@ -246,39 +217,35 @@
         </nav>
     </header>
 
-   <section id="about">
-        <div class="about-container">
-            <!-- Flex wrapper to keep profile picture and text side-by-side -->
-            <div class="about-flex-wrapper">
-                <!-- Profile Picture Box -->
-                <div class="profile-pic">
-                    <img src="profile.png" alt="Profile">
-                </div>
+    <br>
 
-                <!-- Text Content -->
-                <div class="about-text-content">
-                    <h1 class="bubble-greeting">Hello! I am Jenefer! ❀</h1>
-                    <p class="about-text">
-                        I am a 3rd-year student at Cavite State University - Silang Campus. 
-                        I'm also an aspiring game developer, and I love creating my own characters through digital art as well! 
-                        I chose Computer Science in the hopes of combining my interests in games with my creativity to build interactive worlds and characters.
-                    </p>
+    <section id="about">
+        <div class="about-flex-wrapper">
+            <div class="profile-pic">
+                <img src="profile.png" alt="Profile">
+            </div>
 
-                    <!-- Social Media Icons Links -->
-                    <div class="social-icons">
-                        <a href="https://github.com/jeneferignacio" target="_blank" title="GitHub">
-                            <img src="github.svg" alt="GitHub">
-                        </a>
-                        <a href="https://www.facebook.com/jjnfrz" target="_blank" title="Facebook">
-                            <img src="facebook.svg" alt="Facebook">
-                        </a>
-                        <a href="https://www.instagram.com/_jjnfr.zip/" target="_blank" title="Instagram">
-                            <img src="instagram.svg" alt="Instagram">
-                        </a>
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jenefer.ignacio@cvsu.edu.ph" target="_blank" title="Gmail">
-                            <img src="gmail.svg" alt="Gmail">
-                        </a>
-                    </div>
+            <div class="about-text-content">
+                <h1 class="bubble-greeting">Hello! I am Jenefer! ❀</h1>
+                <p class="about-text">
+                    I am a 3rd-year student at Cavite State University - Silang Campus. 
+                    I'm also an aspiring game developer, and I love creating my own characters through digital art as well! 
+                    I chose Computer Science in the hopes of combining my interests in games with my creativity to build interactive worlds and characters.
+                </p>
+
+                <div class="social-icons">
+                    <a href="https://github.com/jeneferignacio" target="_blank" title="GitHub">
+                        <img src="github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://www.facebook.com/jjnfrz" target="_blank" title="Facebook">
+                        <img src="facebook.svg" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/_jjnfr.zip/" target="_blank" title="Instagram">
+                        <img src="instagram.svg" alt="Instagram">
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jenefer.ignacio@cvsu.edu.ph" target="_blank" title="Gmail">
+                        <img src="gmail.svg" alt="Gmail">
+                    </a>
                 </div>
             </div>
         </div>
@@ -310,6 +277,11 @@
             </a>
         </div>
     </section>
+
+    <div class="page-footer">
+        DCIT 26 Academic Portfolio <br>
+        Jenefer Z. Ignacio | BSCS - 3A <br>
+    </div>
 
 </body>
 </html>
