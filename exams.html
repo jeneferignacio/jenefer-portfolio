@@ -6,14 +6,41 @@
     <title>Exams - Jenefer's Portfolio</title>
     <style>
         body { background-color: #1a1518; color: #fce4ec; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        .notion-container { max-width: 800px; margin: 50px auto 50px auto; background-color: #231c21; border: 1px solid #3d3039; border-radius: 12px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .notion-container { max-width: 800px; margin: 50px auto; background-color: #231c21; border: 1px solid #3d3039; border-radius: 12px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         h1 { color: #ff80bf; font-size: 2.2rem; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #3d3039; padding-bottom: 15px; }
         .back-btn { display: inline-block; margin-bottom: 20px; color: #ffb3d1; text-decoration: none; font-weight: bold; background-color: #2d242b; padding: 8px 15px; border-radius: 8px; border: 1px solid #ff80bf; transition: 0.3s; }
         .back-btn:hover { background-color: #ff80bf; color: #1a1518; }
-        .doc-list { margin-top: 30px; }
-        .doc-item { background-color: #1a1518; border: 1px solid #3d3039; padding: 15px 20px; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .doc-item a { color: #ffb3d1; text-decoration: none; font-weight: bold; }
-        .doc-item a:hover { text-decoration: underline; }
+        
+        /* Exam Row Layout */
+        .exam-list { margin-top: 25px; }
+        .exam-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 128, 191, 0.2);
+        }
+        .exam-item:last-child {
+            border-bottom: none;
+        }
+        .exam-item h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #fce4ec;
+        }
+        .doc-btn { 
+            background-color: #2d242b; 
+            color: #ffb3d1; 
+            border: 1px solid #ff80bf; 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .doc-btn:hover { background-color: #ff80bf; color: #1a1518; }
     </style>
 </head>
 <body>
@@ -21,10 +48,15 @@
     <div class="notion-container">
         <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
         <h1>౨ৎ Exams</h1>
-        <p style="color: #b0a4af;">All my major exams scores.</p>
+        <p style="color: #b0a4af; margin-bottom: 25px;">All my major exams scores.</p>
         
-        
-        
+        <div class="exam-list">
+            <div class="exam-item">
+                <h3>Midterm Examination</h3>
+                <a href="MidtermExam.png" target="_blank" class="doc-btn">View Image</a>
+            </div>
+
+
     </div>
 </body>
 </html>
