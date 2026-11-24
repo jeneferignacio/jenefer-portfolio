@@ -7,13 +7,53 @@
     <title>Jenefer's Portfolio</title>
 
     <style>
+        /* =========================
+           COLOR THEME
+        ========================= */
+
+        :root {
+            --bg-main: #1a1518;
+            --bg-card: rgba(26, 20, 23, 0.86);
+            --bg-card-solid: rgba(26, 20, 23, 0.92);
+
+            --pink-main: #ff80bf;
+            --pink-light: #ffb3d1;
+            --pink-soft: #ffc6df;
+            --pink-pale: #ffeaf5;
+
+            --text-main: #fce4ec;
+            --text-soft: #f0d8e8;
+            --text-muted: #b0a4af;
+
+            --border-dark: #2d242b;
+            --border-card: #4a333b;
+
+            --glow-pink: rgba(255, 128, 191, 0.35);
+            --glow-soft: rgba(255, 179, 209, 0.18);
+
+            --radius-card: 14px;
+            --radius-button: 20px;
+
+            --transition-soft: 0.3s ease;
+            --transition-smooth: 0.45s ease;
+        }
+
+
+        /* =========================
+           BASIC PAGE SETTINGS
+        ========================= */
+
         ::selection {
-            background-color: #ff80bf;
-            color: #1a1518;
+            background-color: var(--pink-main);
+            color: var(--bg-main);
         }
 
         html {
             scroll-behavior: smooth;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
         ::-webkit-scrollbar {
@@ -21,42 +61,41 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #1a1518;
+            background: var(--bg-main);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #ff80bf;
+            background: var(--pink-main);
             border-radius: 999px;
-            border: 2px solid #1a1518;
+            border: 2px solid var(--bg-main);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #ffb3d1;
+            background: var(--pink-light);
         }
 
         body {
-            background-color: #1a1518;
-            color: #fce4ec;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             position: relative;
             overflow-x: hidden;
             width: 100%;
-            box-sizing: border-box;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
         }
 
         a:focus-visible,
         button:focus-visible {
-            outline: 2px solid #ff80bf;
+            outline: 2px solid var(--pink-main);
             outline-offset: 3px;
         }
 
-        /* Soft fairy glow that follows the cursor */
+
+        /* =========================
+           CURSOR GLOW
+        ========================= */
+
         .cursor-glow {
             position: fixed;
             top: 0;
@@ -64,6 +103,7 @@
             width: 190px;
             height: 190px;
             border-radius: 50%;
+
             background: radial-gradient(
                 circle,
                 rgba(255, 239, 248, 0.10) 0%,
@@ -71,6 +111,7 @@
                 rgba(255, 128, 191, 0.035) 50%,
                 transparent 75%
             );
+
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 0;
@@ -79,7 +120,11 @@
             will-change: left, top;
         }
 
-        /* Pink fairy orb cursor */
+
+        /* =========================
+           FAIRY ORB CURSOR
+        ========================= */
+
         .cursor-orb {
             position: fixed;
             top: 0;
@@ -91,12 +136,26 @@
             z-index: 10000;
             opacity: 0;
             transform: translate(-50%, -50%);
-            background: radial-gradient(circle, #fff 0%, #fff4fa 28%, #ffc6df 58%, #ff80bf 100%);
+
+            background: radial-gradient(
+                circle,
+                #ffffff 0%,
+                #fff4fa 28%,
+                var(--pink-soft) 58%,
+                var(--pink-main) 100%
+            );
+
             box-shadow:
                 0 0 5px rgba(255, 255, 255, 0.95),
                 0 0 12px rgba(255, 179, 209, 0.85),
                 0 0 24px rgba(255, 128, 191, 0.55);
-            transition: opacity 0.25s ease, width 0.25s ease, height 0.25s ease, box-shadow 0.25s ease;
+
+            transition:
+                opacity 0.25s ease,
+                width 0.25s ease,
+                height 0.25s ease,
+                box-shadow 0.25s ease;
+
             will-change: left, top;
         }
 
@@ -105,13 +164,21 @@
             position: absolute;
             inset: -8px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 214, 233, 0.24) 0%, rgba(255, 128, 191, 0.12) 45%, transparent 75%);
+
+            background: radial-gradient(
+                circle,
+                rgba(255, 214, 233, 0.24) 0%,
+                rgba(255, 128, 191, 0.12) 45%,
+                transparent 75%
+            );
+
             filter: blur(2px);
         }
 
         .cursor-orb.hovering {
             width: 17px;
             height: 17px;
+
             box-shadow:
                 0 0 6px rgba(255, 255, 255, 1),
                 0 0 16px rgba(255, 179, 209, 0.95),
@@ -123,22 +190,30 @@
         }
 
         @keyframes orbPulse {
-            0%, 100% { opacity: 0.92; }
-            50% { opacity: 1; }
+            0%, 100% {
+                opacity: 0.92;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .cursor-orb {
             animation: orbPulse 2.4s ease-in-out infinite;
         }
 
-        /* Hide the normal cursor on desktop */
         @media (hover: hover) and (pointer: fine) {
             body, a, button {
                 cursor: none !important;
             }
         }
 
-        /* Floating fairy dust particles */
+
+        /* =========================
+           FAIRY DUST PARTICLES
+        ========================= */
+
         .cursor-dust {
             position: fixed;
             pointer-events: none;
@@ -147,9 +222,13 @@
             left: 0;
             top: 0;
             opacity: 0;
-            background: var(--dust-color, #ffeaf5);
+
+            background: var(--dust-color, var(--pink-pale));
+
             box-shadow:
-                0 0 var(--dust-glow, 5px) var(--dust-color, #ffeaf5);
+                0 0 var(--dust-glow, 5px)
+                var(--dust-color, var(--pink-pale));
+
             animation: dustFloat var(--dust-duration, 1.2s) ease-out forwards;
             will-change: transform, opacity;
         }
@@ -185,6 +264,11 @@
             }
         }
 
+
+        /* =========================
+           PAGE LAYERING
+        ========================= */
+
         .gif-banner,
         header,
         section,
@@ -194,6 +278,11 @@
             z-index: 1;
         }
 
+
+        /* =========================
+           BANNER
+        ========================= */
+
         .gif-banner {
             width: 100%;
             height: 200px;
@@ -201,6 +290,11 @@
             background-size: cover;
             background-position: center 63%;
         }
+
+
+        /* =========================
+           HEADER AND LOGO
+        ========================= */
 
         header {
             text-align: center;
@@ -218,14 +312,24 @@
             height: auto;
             display: inline-block;
             margin-right: 60px;
+            transition: filter var(--transition-smooth);
+        }
+
+        .header-logo img:hover {
+            filter: drop-shadow(0 0 12px var(--glow-pink));
         }
 
         .subtitle {
-            color: #f0d8e8;
+            color: var(--text-soft);
             font-size: 1.05rem;
             margin-top: 8px;
             margin-bottom: 25px;
         }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
 
         nav {
             display: flex;
@@ -237,30 +341,44 @@
 
         nav a {
             background-color: rgba(35, 28, 33, 0.9);
-            color: #ffb3d1;
+            color: var(--pink-light);
             padding: 12px 26px;
-            border-radius: 20px;
+            border-radius: var(--radius-button);
             text-decoration: none;
-            border: 1px solid #ff80bf;
+            border: 1px solid var(--pink-main);
             font-weight: bold;
             font-size: 0.95rem;
-            transition: all 0.25s ease;
+
+            transition:
+                background-color var(--transition-soft),
+                color var(--transition-soft),
+                transform var(--transition-soft),
+                box-shadow var(--transition-soft);
         }
 
         nav a:hover {
-            background-color: #ff80bf;
-            color: #1a1518;
-            transform: translateY(-2px);
-            box-shadow: 0 0 14px rgba(255, 128, 191, 0.3);
+            background-color: var(--pink-main);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+            box-shadow: 0 0 16px var(--glow-pink);
         }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
 
         section {
             padding: 50px 20px;
             max-width: 900px;
             margin: 0 auto;
+
             opacity: 0;
             transform: translateY(14px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease;
         }
 
         section.is-visible {
@@ -269,16 +387,25 @@
         }
 
         #about {
-            border-top: 1px solid #2d242b;
-            border-bottom: 1px solid #2d242b;
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
         }
 
         section h2 {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #ff80bf;
+            color: var(--pink-main);
             margin-bottom: 15px;
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 0 12px rgba(255, 128, 191, 0.15);
         }
+
+
+        /* =========================
+           ABOUT ME SECTION
+        ========================= */
 
         .about-flex-wrapper {
             display: flex;
@@ -291,38 +418,76 @@
             width: 300px;
             height: 300px;
             flex-shrink: 0;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             margin-right: -20px;
+            position: relative;
+            isolation: isolate;
+        }
+
+        /* Soft aura behind the profile picture */
+        .profile-pic::before {
+            content: "";
+            position: absolute;
+            width: 75%;
+            height: 75%;
+            border-radius: 50%;
+
+            background: rgba(255, 128, 191, 0.12);
+            filter: blur(45px);
+            z-index: -1;
+
+            transition:
+                background var(--transition-smooth),
+                transform var(--transition-smooth);
+        }
+
+        .profile-pic:hover::before {
+            background: rgba(255, 128, 191, 0.2);
+            transform: scale(1.15);
         }
 
         .profile-pic img {
             width: 110%;
             height: 110%;
             object-fit: contain;
-            transition: transform 0.35s ease;
+
+            transition:
+                transform var(--transition-smooth),
+                filter var(--transition-smooth);
         }
 
         .profile-pic:hover img {
-            transform: scale(1.03);
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 12px var(--glow-soft));
         }
 
         .bubble-greeting {
-            color: #ff80bf;
+            color: var(--pink-main);
             font-size: 1.8rem;
             line-height: 1.5;
             margin-top: 0;
             margin-bottom: 20px;
+
+            text-shadow:
+                0 0 18px rgba(255, 128, 191, 0.12);
         }
 
         .about-text {
-            color: #fce4ec;
+            color: var(--text-main);
             font-size: 1.15rem;
             line-height: 1.8;
             margin-bottom: 25px;
             font-weight: 400;
         }
+
+
+        /* =========================
+           SOCIAL ICONS
+        ========================= */
 
         .social-icons {
             display: flex;
@@ -335,22 +500,40 @@
         .social-icons a {
             text-decoration: none;
             display: inline-block;
-            transition: transform 0.2s ease;
+            transition: transform var(--transition-soft);
         }
 
         .social-icons img {
             width: 40px;
             height: 40px;
             object-fit: contain;
-            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(101%) contrast(101%);
-            transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+
+            filter: invert(77%) sepia(21%) saturate(362%)
+                hue-rotate(299deg) brightness(101%) contrast(101%);
+
+            transition:
+                transform var(--transition-soft),
+                opacity var(--transition-soft),
+                filter var(--transition-soft);
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
         }
 
         .social-icons a:hover img {
-            transform: scale(1.12);
-            opacity: 0.9;
-            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(115%) contrast(105%) drop-shadow(0 0 6px rgba(255, 128, 191, 0.4));
+            transform: scale(1.08);
+            opacity: 0.95;
+
+            filter: invert(77%) sepia(21%) saturate(362%)
+                hue-rotate(299deg) brightness(115%) contrast(105%)
+                drop-shadow(0 0 7px var(--glow-pink));
         }
+
+
+        /* =========================
+           DASHBOARD CARDS
+        ========================= */
 
         .grid-container {
             display: flex;
@@ -363,18 +546,26 @@
         .notion-card {
             position: relative;
             flex: 0 1 calc(50% - 13px);
-            background-color: rgba(26, 20, 23, 0.86);
+
+            background-color: var(--bg-card);
             backdrop-filter: blur(6px);
-            border: 1px solid #4a333b;
-            border-radius: 12px;
+
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-card);
             overflow: hidden;
+
             display: flex;
             flex-direction: column;
             text-decoration: none;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+            transition:
+                transform var(--transition-soft),
+                border-color var(--transition-soft),
+                box-shadow var(--transition-soft),
+                background-color var(--transition-soft);
         }
 
-        /* Gentle shine on the cards */
+        /* Gentle light sweep */
         .notion-card::after {
             content: "";
             position: absolute;
@@ -382,21 +573,29 @@
             left: -75%;
             width: 50%;
             height: 100%;
+
             background: linear-gradient(
                 90deg,
                 rgba(255, 179, 209, 0) 0%,
                 rgba(255, 179, 209, 0.08) 50%,
                 rgba(255, 179, 209, 0) 100%
             );
+
             transform: skewX(-20deg);
             transition: left 0.65s ease;
             pointer-events: none;
         }
 
         .notion-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+
             border-color: rgba(255, 128, 191, 0.75);
-            box-shadow: 0 8px 22px rgba(255, 128, 191, 0.14);
+
+            background-color: rgba(34, 25, 30, 0.95);
+
+            box-shadow:
+                0 8px 22px rgba(255, 128, 191, 0.14),
+                0 0 12px rgba(255, 128, 191, 0.05);
         }
 
         .notion-card:hover::after {
@@ -408,31 +607,55 @@
             height: 140px;
             object-fit: cover;
             display: block;
-            transition: transform 0.35s ease;
+
+            transition:
+                transform var(--transition-smooth),
+                filter var(--transition-smooth);
         }
 
         .notion-card:hover .card-img {
             transform: scale(1.025);
+            filter: brightness(1.06);
         }
 
         .card-title {
             padding: 15px;
-            color: #fce4ec;
+            color: var(--text-main);
             font-weight: bold;
             font-size: 1.1rem;
-            background-color: rgba(26, 20, 23, 0.92);
+            background-color: var(--bg-card-solid);
+
+            transition:
+                color var(--transition-soft),
+                background-color var(--transition-soft);
         }
+
+        .notion-card:hover .card-title {
+            color: var(--pink-light);
+            background-color: rgba(36, 25, 31, 0.96);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         .page-footer {
             text-align: center;
-            color: #b0a4af;
+            color: var(--text-muted);
             font-size: 0.85rem;
             line-height: 1.6;
             padding: 40px 20px;
             max-width: 900px;
             margin: 0 auto;
-            border-top: 1px solid #2d242b;
+
+            border-top: 1px solid var(--border-dark);
         }
+
+
+        /* =========================
+           BACK TO TOP BUTTON
+        ========================= */
 
         .scroll-top-btn {
             position: fixed;
@@ -441,20 +664,32 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
+
             background-color: #231c21;
-            color: #ffb3d1;
-            border: 1px solid #ff80bf;
+            color: var(--pink-light);
+            border: 1px solid var(--pink-main);
+
             font-size: 1.1rem;
             font-weight: bold;
-            cursor: pointer;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: all 0.25s ease;
+
+            transition:
+                opacity var(--transition-soft),
+                visibility var(--transition-soft),
+                transform var(--transition-soft),
+                background-color var(--transition-soft),
+                color var(--transition-soft),
+                box-shadow var(--transition-soft);
+
             z-index: 10;
         }
 
@@ -465,12 +700,21 @@
         }
 
         .scroll-top-btn:hover {
-            background-color: #ff80bf;
-            color: #1a1518;
-            box-shadow: 0 0 12px rgba(255, 128, 191, 0.35);
+            background-color: var(--pink-main);
+            color: var(--bg-main);
+
+            box-shadow:
+                0 0 14px var(--glow-pink),
+                0 0 24px var(--glow-soft);
+
+            transform: translateY(-3px);
         }
 
-        /* Reduced motion settings */
+
+        /* =========================
+           REDUCED MOTION
+        ========================= */
+
         @media (prefers-reduced-motion: reduce) {
             html {
                 scroll-behavior: auto;
@@ -482,7 +726,12 @@
             .card-img,
             .cursor-glow,
             .cursor-orb,
-            .cursor-dust {
+            .cursor-dust,
+            .profile-pic img,
+            .profile-pic::before,
+            nav a,
+            .social-icons img,
+            .scroll-top-btn {
                 transition: none !important;
                 animation: none !important;
             }
@@ -493,16 +742,32 @@
             }
         }
 
-        /* Hide cursor effects on touch devices */
+
+        /* =========================
+           TOUCH DEVICE SETTINGS
+        ========================= */
+
         @media (hover: none) {
             .cursor-glow,
             .cursor-orb,
             .cursor-dust {
                 display: none;
             }
+
+            .notion-card:hover {
+                transform: none;
+            }
+
+            .profile-pic:hover img {
+                transform: none;
+            }
         }
 
-        /* Tablet and mobile layout */
+
+        /* =========================
+           TABLET AND MOBILE
+        ========================= */
+
         @media (max-width: 768px) {
             .gif-banner {
                 height: 150px;
@@ -608,11 +873,14 @@
 
 <body>
 
+    <!-- Cursor effects -->
     <div class="cursor-glow" id="cursorGlow"></div>
     <div class="cursor-orb" id="cursorOrb"></div>
 
+    <!-- Banner -->
     <div class="gif-banner"></div>
 
+    <!-- Header -->
     <header id="home">
         <div class="header-logo">
             <img src="font.png" alt="Jenefer's Portfolio">
@@ -626,8 +894,11 @@
         </nav>
     </header>
 
+
+    <!-- About Me -->
     <section id="about">
         <div class="about-flex-wrapper">
+
             <div class="profile-pic">
                 <img src="profile.png" alt="Profile">
             </div>
@@ -662,11 +933,17 @@
         </div>
     </section>
 
+
+    <!-- Portfolio Dashboard -->
     <section id="portfolio">
         <h2>Portfolio Dashboard! ❀</h2>
-        <p class="subtitle">Click a folder to view my class records and documents.</p>
+
+        <p class="subtitle">
+            Click a folder to view my class records and documents.
+        </p>
 
         <div class="grid-container">
+
             <a href="activities.html" class="notion-card">
                 <img src="gif1.gif" alt="Activity Banner" class="card-img">
                 <div class="card-title">౨ৎ Activities</div>
@@ -691,17 +968,34 @@
                 <img src="gif5.gif" alt="Certificates Banner" class="card-img">
                 <div class="card-title">౨ৎ Certificates</div>
             </a>
+
         </div>
     </section>
 
+
+    <!-- Footer -->
     <div class="page-footer">
         DCIT 26 Academic Portfolio <br>
         Jenefer Z. Ignacio | BSCS - 3A <br>
     </div>
 
-    <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Back to top" title="Back to top">↑</button>
+
+    <!-- Back to Top -->
+    <button
+        type="button"
+        class="scroll-top-btn"
+        id="scrollTopBtn"
+        aria-label="Back to top"
+        title="Back to top">
+        ↑
+    </button>
+
 
     <script>
+        /* =========================
+           ELEMENTS
+        ========================= */
+
         const glow = document.getElementById('cursorGlow');
         const orb = document.getElementById('cursorOrb');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
@@ -712,9 +1006,15 @@
         let lastDustX = 0, lastDustY = 0;
         let isVisible = false;
 
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches;
 
-        /* Dust colors */
+
+        /* =========================
+           DUST COLORS
+        ========================= */
+
         const dustColors = [
             '#fff9fd',
             '#ffeaf5',
@@ -723,45 +1023,71 @@
             '#ffb3d1'
         ];
 
+
+        /* =========================
+           CURSOR MOVEMENT
+        ========================= */
+
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+
             orb.style.opacity = '1';
 
-            // Make the orb glow brighter over clickable elements
-            const hoveredElement = e.target.closest('a, button, [role="button"]');
+            /* Make the orb glow brighter over clickable elements */
+            const hoveredElement = e.target.closest(
+                'a, button, [role="button"]'
+            );
+
             orb.classList.toggle('hovering', !!hoveredElement);
 
             if (!isVisible) {
                 isVisible = true;
+
                 currentX = mouseX;
                 currentY = mouseY;
+
                 lastDustX = mouseX;
                 lastDustY = mouseY;
+
                 glow.style.opacity = '1';
             }
 
+            /* Create fairy dust while moving */
             if (!prefersReducedMotion) {
-                const dist = Math.hypot(mouseX - lastDustX, mouseY - lastDustY);
+                const dist = Math.hypot(
+                    mouseX - lastDustX,
+                    mouseY - lastDustY
+                );
 
                 if (dist > 8) {
                     spawnDust(mouseX, mouseY);
+
                     lastDustX = mouseX;
                     lastDustY = mouseY;
                 }
             }
         });
 
+
+        /* Hide cursor effects when leaving the page */
         document.addEventListener('mouseleave', () => {
             isVisible = false;
+
             glow.style.opacity = '0';
             orb.style.opacity = '0';
+
             orb.classList.remove('hovering');
         });
 
-        /* Create drifting glitter particles */
+
+        /* =========================
+           CREATE FAIRY DUST
+        ========================= */
+
         function spawnDust(x, y) {
             const dust = document.createElement('span');
+
             dust.className = 'cursor-dust';
 
             /* Random particle size */
@@ -778,13 +1104,16 @@
             const opacity = Math.random() * 0.5 + 0.3;
 
             /* Random color */
-            const color = dustColors[Math.floor(Math.random() * dustColors.length)];
+            const color = dustColors[
+                Math.floor(Math.random() * dustColors.length)
+            ];
 
             /* Random glow */
             const glowSize = Math.random() * 7 + 2;
 
             dust.style.width = `${size}px`;
             dust.style.height = `${size}px`;
+
             dust.style.left = `${x + (Math.random() * 16 - 8)}px`;
             dust.style.top = `${y + (Math.random() * 16 - 8)}px`;
 
@@ -797,12 +1126,17 @@
 
             document.body.appendChild(dust);
 
+            /* Remove particles after their animation */
             dust.addEventListener('animationend', () => {
                 dust.remove();
             });
         }
 
-        /* Softly follow the cursor */
+
+        /* =========================
+           SOFT CURSOR GLOW
+        ========================= */
+
         function animateGlow() {
             currentX += (mouseX - currentX) * 0.12;
             currentY += (mouseY - currentY) * 0.12;
@@ -810,7 +1144,7 @@
             glow.style.left = `${currentX}px`;
             glow.style.top = `${currentY}px`;
 
-            // The orb tracks the pointer more closely than the ambient glow
+            /* Orb follows the pointer more closely */
             orb.style.left = `${mouseX}px`;
             orb.style.top = `${mouseY}px`;
 
@@ -819,7 +1153,11 @@
 
         animateGlow();
 
-        /* Show back-to-top button while scrolling */
+
+        /* =========================
+           BACK TO TOP BUTTON
+        ========================= */
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 320) {
                 scrollTopBtn.classList.add('visible');
@@ -835,9 +1173,15 @@
             });
         });
 
-        /* Section reveal effect */
+
+        /* =========================
+           SECTION REVEAL
+        ========================= */
+
         if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-            sections.forEach((sec) => sec.classList.add('is-visible'));
+            sections.forEach((sec) => {
+                sec.classList.add('is-visible');
+            });
         } else {
             const observer = new IntersectionObserver(
                 (entries) => {
@@ -851,7 +1195,9 @@
                 { threshold: 0.05 }
             );
 
-            sections.forEach((sec) => observer.observe(sec));
+            sections.forEach((sec) => {
+                observer.observe(sec);
+            });
         }
     </script>
 
