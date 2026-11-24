@@ -4,93 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates - Jenefer's Portfolio</title>
-
+    <title>Certificates | Jenefer's Portfolio</title>
     <link rel="stylesheet" href="folder-style.css">
 </head>
 <body>
 
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="cursor-orb" id="cursorOrb"></div>
+<div class="cursor-glow"></div>
+<div class="cursor-orb"></div>
 
-    <div class="notion-container">
+<main class="notion-container">
 
-        <a href="index.html#portfolio" class="back-btn">
-            ← Back to Dashboard
-        </a>
+    <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
 
-        <h1>౨ৎ Certificates</h1>
+    <h1 class="page-title">✧ Certificates</h1>
 
-        <p class="page-description">
-            Preview photos of my e-certificates, workshops, and completed courses.
-        </p>
+    <p class="page-description">
+        Certificates and recognitions from seminars, workshops, and learning experiences.
+    </p>
 
-        <div class="certificate-grid">
+    <div class="certificate-grid">
 
-            <!-- Certificate 1 -->
-            <div class="certificate-card">
+        <!-- CERTIFICATE 1 -->
+        <div class="certificate-card">
 
-                <a href="Certificate1.png" target="_blank">
-                    <img src="Certificate1.png"
-                         alt="First Certificate">
-                </a>
+            <img src="Certificate1.png"
+                 class="certificate-image"
+                 data-certificate
+                 data-title="Certificate 1"
+                 alt="Certificate 1"
+                 loading="lazy">
 
-                <div class="certificate-details">
-                    <h3>Certificate Title Here</h3>
+            <div class="certificate-details">
+                <h3>Certificate 1</h3>
+                <p>Seminar / Workshop / Training</p>
 
-                    <p class="certificate-meta">
-                        Issuing Organization • Year
-                    </p>
-
-                    <a href="Certificate1.png"
-                       target="_blank"
-                       class="doc-btn">
-                        View Certificate
-                    </a>
-                </div>
-
+                <button class="doc-btn"
+                        onclick="document.querySelector('.certificate-image').click()">
+                    View Certificate
+                </button>
             </div>
 
+        </div>
 
-            <!-- Certificate 2 -->
-            <div class="certificate-card">
+        <!-- CERTIFICATE 2 -->
+        <div class="certificate-card">
 
-                <a href="Certificate2.png" target="_blank">
-                    <img src="Certificate2.png"
-                         alt="Second Certificate">
-                </a>
+            <img src="Certificate2.png"
+                 class="certificate-image"
+                 data-certificate
+                 data-title="Certificate 2"
+                 alt="Certificate 2"
+                 loading="lazy">
 
-                <div class="certificate-details">
-                    <h3>Second Certificate Title</h3>
+            <div class="certificate-details">
+                <h3>Certificate 2</h3>
+                <p>Seminar / Workshop / Training</p>
 
-                    <p class="certificate-meta">
-                        Issuing Organization • Year
-                    </p>
-
-                    <a href="Certificate2.png"
-                       target="_blank"
-                       class="doc-btn">
-                        View Certificate
-                    </a>
-                </div>
-
+                <button class="doc-btn"
+                        onclick="this.closest('.certificate-card').querySelector('.certificate-image').click()">
+                    View Certificate
+                </button>
             </div>
 
         </div>
 
     </div>
 
-    <div class="page-footer">
-        DCIT 26 Academic Portfolio <br>
+    <footer class="page-footer">
+        DCIT 26 Academic Portfolio<br>
         Jenefer Z. Ignacio | BSCS - 3A
-    </div>
+    </footer>
 
-    <button type="button" class="scroll-top-btn" id="scrollTopBtn"
-            aria-label="Back to top" title="Back to top">
-        ↑
-    </button>
+</main>
 
-    <script src="folder-effects.js"></script>
+<button class="scroll-top-btn" aria-label="Scroll to top">↑</button>
 
+<script src="folder-effects.js"></script>
 </body>
 </html>
