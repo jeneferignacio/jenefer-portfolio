@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jenefer's Portfolio</title>
+
     <style>
         ::selection {
             background-color: #ff80bf;
@@ -54,36 +56,36 @@
             outline-offset: 3px;
         }
 
-        /* Cursor aura */
+        /* Soft fairy-like cursor glow */
         .cursor-glow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 150px;
-            height: 150px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             background: radial-gradient(
                 circle at center,
-                rgba(255, 220, 240, 0.18) 0%,
-                rgba(255, 128, 191, 0.12) 30%,
-                rgba(255, 128, 191, 0.05) 55%,
+                rgba(255, 235, 247, 0.12) 0%,
+                rgba(255, 179, 209, 0.10) 25%,
+                rgba(255, 128, 191, 0.05) 50%,
                 transparent 75%
             );
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 0;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
             will-change: left, top;
         }
 
-        /* Magical sparkle orb cursor */
+        /* Tiny floating fairy light */
         .cursor-orb {
             position: fixed;
             top: 0;
             left: 0;
-            width: 18px;
-            height: 18px;
+            width: 11px;
+            height: 11px;
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -91,55 +93,52 @@
             opacity: 0;
             background: radial-gradient(
                 circle,
-                #ffffff 0%,
-                #ffe8f4 25%,
-                #ffb3d1 55%,
-                rgba(255, 128, 191, 0.5) 75%,
-                transparent 100%
+                #fff9fd 0%,
+                #ffeaf5 30%,
+                #ffc6df 60%,
+                rgba(255, 179, 209, 0.15) 100%
             );
             box-shadow:
-                0 0 5px #ffffff,
-                0 0 10px #ffb3d1,
-                0 0 20px #ff80bf,
-                0 0 35px rgba(255, 128, 191, 0.65);
-            transition: opacity 0.2s ease, scale 0.2s ease;
+                0 0 5px rgba(255, 255, 255, 0.9),
+                0 0 10px rgba(255, 179, 209, 0.7),
+                0 0 20px rgba(255, 128, 191, 0.35);
+            transition: opacity 0.3s ease, scale 0.35s ease;
         }
 
-        /* Outer magical ring */
+        /* Very faint fairy ring */
         .cursor-orb::before {
             content: "";
             position: absolute;
-            inset: -7px;
-            border: 1px solid rgba(255, 179, 209, 0.6);
+            inset: -5px;
+            border: 1px solid rgba(255, 220, 240, 0.22);
             border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 128, 191, 0.3);
+            box-shadow: 0 0 5px rgba(255, 179, 209, 0.1);
         }
 
-        /* Bright center */
+        /* Soft glowing center */
         .cursor-orb::after {
             content: "";
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 3px;
+            height: 3px;
             top: 50%;
             left: 50%;
             border-radius: 50%;
             background: white;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 8px white, 0 0 15px #ff80bf;
+            box-shadow: 0 0 5px white, 0 0 9px #ffb3d1;
         }
 
-        /* Cursor reacts to clickable elements */
+        /* A gentle glow when hovering over links and cards */
         .cursor-orb.hovering {
-            scale: 1.35;
+            scale: 1.2;
             box-shadow:
-                0 0 7px #ffffff,
-                0 0 15px #ffb3d1,
-                0 0 28px #ff80bf,
-                0 0 45px rgba(255, 128, 191, 0.8);
+                0 0 6px rgba(255, 255, 255, 0.9),
+                0 0 13px rgba(255, 179, 209, 0.75),
+                0 0 25px rgba(255, 128, 191, 0.45);
         }
 
-        /* Hide default mouse cursor on desktop */
+        /* Hide normal cursor on desktop */
         @media (hover: hover) and (pointer: fine) {
             body, a, button {
                 cursor: none !important;
@@ -152,20 +151,26 @@
             pointer-events: none;
             color: #ffb3d1;
             font-size: 12px;
-            text-shadow: 0 0 8px rgba(255, 128, 191, 0.85);
+            text-shadow: 0 0 8px rgba(255, 128, 191, 0.7);
             z-index: 2;
             transform: translate(-50%, -50%);
-            animation: sparkleFade 0.85s ease-out forwards;
+            animation: sparkleFade 1s ease-out forwards;
         }
 
         @keyframes sparkleFade {
             0% {
-                opacity: 0.95;
-                transform: translate(-50%, -50%) scale(0.7) rotate(0deg);
+                opacity: 0.9;
+                transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
             }
+
+            35% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1) rotate(20deg);
+            }
+
             100% {
                 opacity: 0;
-                transform: translate(-50%, calc(-50% - 26px)) scale(1.25) rotate(45deg);
+                transform: translate(-50%, calc(-50% - 24px)) scale(0.6) rotate(55deg);
             }
         }
 
@@ -235,7 +240,7 @@
             background-color: #ff80bf;
             color: #1a1518;
             transform: translateY(-2px);
-            box-shadow: 0 0 18px rgba(255, 128, 191, 0.45);
+            box-shadow: 0 0 14px rgba(255, 128, 191, 0.3);
         }
 
         section {
@@ -331,9 +336,9 @@
         }
 
         .social-icons a:hover img {
-            transform: scale(1.15);
+            transform: scale(1.12);
             opacity: 0.9;
-            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(115%) contrast(105%) drop-shadow(0 0 8px rgba(255, 128, 191, 0.6));
+            filter: invert(77%) sepia(21%) saturate(362%) hue-rotate(299deg) brightness(115%) contrast(105%) drop-shadow(0 0 6px rgba(255, 128, 191, 0.4));
         }
 
         .grid-container {
@@ -358,6 +363,7 @@
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
+        /* Subtle shine when hovering over cards */
         .notion-card::after {
             content: "";
             position: absolute;
@@ -368,18 +374,18 @@
             background: linear-gradient(
                 90deg,
                 rgba(255, 179, 209, 0) 0%,
-                rgba(255, 179, 209, 0.14) 50%,
+                rgba(255, 179, 209, 0.08) 50%,
                 rgba(255, 179, 209, 0) 100%
             );
             transform: skewX(-20deg);
-            transition: left 0.55s ease;
+            transition: left 0.65s ease;
             pointer-events: none;
         }
 
         .notion-card:hover {
-            transform: translateY(-6px);
-            border-color: #ff80bf;
-            box-shadow: 0 10px 28px rgba(255, 128, 191, 0.22);
+            transform: translateY(-4px);
+            border-color: rgba(255, 128, 191, 0.75);
+            box-shadow: 0 8px 22px rgba(255, 128, 191, 0.14);
         }
 
         .notion-card:hover::after {
@@ -395,7 +401,7 @@
         }
 
         .notion-card:hover .card-img {
-            transform: scale(1.04);
+            transform: scale(1.025);
         }
 
         .card-title {
@@ -450,9 +456,10 @@
         .scroll-top-btn:hover {
             background-color: #ff80bf;
             color: #1a1518;
-            box-shadow: 0 0 16px rgba(255, 128, 191, 0.5);
+            box-shadow: 0 0 12px rgba(255, 128, 191, 0.35);
         }
 
+        /* Reduced motion settings */
         @media (prefers-reduced-motion: reduce) {
             html {
                 scroll-behavior: auto;
@@ -475,6 +482,7 @@
             }
         }
 
+        /* Hide cursor effects on touch devices */
         @media (hover: none) {
             .cursor-glow,
             .cursor-orb,
@@ -483,6 +491,7 @@
             }
         }
 
+        /* Tablet and mobile layout */
         @media (max-width: 768px) {
             .gif-banner {
                 height: 150px;
@@ -585,6 +594,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="cursor-glow" id="cursorGlow"></div>
@@ -596,6 +606,7 @@
         <div class="header-logo">
             <img src="font.png" alt="Jenefer's Portfolio">
         </div>
+
         <p class="subtitle">Welcome to my digital portfolio!</p>
 
         <nav>
@@ -612,6 +623,7 @@
 
             <div class="about-text-content">
                 <h1 class="bubble-greeting">Hello! I am Jenefer! ❀</h1>
+
                 <p class="about-text">
                     I am a 3rd-year student at Cavite State University - Silang Campus.
                     I'm also an aspiring game developer, and I love creating my own characters through digital art as well!
@@ -622,12 +634,15 @@
                     <a href="https://github.com/jeneferignacio" target="_blank" title="GitHub">
                         <img src="github.svg" alt="GitHub">
                     </a>
+
                     <a href="https://www.facebook.com/jjnfrz" target="_blank" title="Facebook">
                         <img src="facebook.svg" alt="Facebook">
                     </a>
+
                     <a href="https://www.instagram.com/_jjnfr.zip/" target="_blank" title="Instagram">
                         <img src="instagram.svg" alt="Instagram">
                     </a>
+
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jenefer.ignacio@cvsu.edu.ph" target="_blank" title="Gmail">
                         <img src="gmail.svg" alt="Gmail">
                     </a>
@@ -686,7 +701,7 @@
         let lastSparkleX = 0, lastSparkleY = 0;
         let isVisible = false;
 
-        const sparkleGlyphs = ['✦', '❀', '✧'];
+        const sparkleGlyphs = ['✦', '❀', '✧', '⋆'];
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         document.addEventListener('mousemove', (e) => {
@@ -709,7 +724,7 @@
             if (!prefersReducedMotion) {
                 const dist = Math.hypot(mouseX - lastSparkleX, mouseY - lastSparkleY);
 
-                if (dist > 30) {
+                if (dist > 26) {
                     spawnSparkle(mouseX, mouseY);
                     lastSparkleX = mouseX;
                     lastSparkleY = mouseY;
@@ -735,11 +750,16 @@
             const sparkle = document.createElement('span');
             sparkle.className = 'cursor-sparkle';
 
-            /* Fixed the sparkleGlyphs variable name */
             sparkle.textContent = sparkleGlyphs[Math.floor(Math.random() * sparkleGlyphs.length)];
 
-            sparkle.style.left = `${x + (Math.random() * 14 - 7)}px`;
-            sparkle.style.top = `${y + (Math.random() * 14 - 7)}px`;
+            /* Randomize the sparkle's size and position */
+            const size = Math.random() * 7 + 9;
+            const offsetX = Math.random() * 18 - 9;
+            const offsetY = Math.random() * 18 - 9;
+
+            sparkle.style.fontSize = `${size}px`;
+            sparkle.style.left = `${x + offsetX}px`;
+            sparkle.style.top = `${y + offsetY}px`;
 
             document.body.appendChild(sparkle);
 
