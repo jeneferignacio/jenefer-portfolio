@@ -800,4 +800,14 @@ document.querySelectorAll("[data-certificate-open]").forEach(button => {
 
 });
 
+// ===== FAIRY CURSOR INITIALIZATION FIX =====
+
+document.addEventListener("mousemove", () => {
+    document.body.classList.add("cursor-ready");
+}, { once: true });
+
+document.addEventListener("mouseleave", () => {
+    document.body.classList.remove("cursor-ready");
+});
+
 
