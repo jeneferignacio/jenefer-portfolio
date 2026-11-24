@@ -1,161 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificates - Jenefer's Portfolio</title>
-    <style>
-        body {
-            background-color: #1a1518;
-            color: #fce4ec;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
 
-        .notion-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #231c21;
-            border: 1px solid #3d3039;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            color: #ff80bf;
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #3d3039;
-            padding-bottom: 15px;
-        }
-
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #ffb3d1;
-            text-decoration: none;
-            font-weight: bold;
-            background-color: #2d242b;
-            padding: 8px 15px;
-            border-radius: 8px;
-            border: 1px solid #ff80bf;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover {
-            background-color: #ff80bf;
-            color: #1a1518;
-        }
-
-        .certificate-list {
-            margin-top: 25px;
-        }
-
-        .certificate-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 128, 191, 0.2);
-        }
-
-        .certificate-item:last-child {
-            border-bottom: none;
-        }
-
-        .certificate-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .certificate-thumb {
-            width: 96px;
-            height: 64px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #4a333b;
-            flex-shrink: 0;
-        }
-
-        .certificate-item h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: #fce4ec;
-        }
-
-        .certificate-meta {
-            color: #b0a4af;
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-
-        .doc-btn {
-            background-color: #2d242b;
-            color: #ffb3d1;
-            border: 1px solid #ff80bf;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        .doc-btn:hover {
-            background-color: #ff80bf;
-            color: #1a1518;
-        }
-
-        @media (max-width: 600px) {
-            .notion-container {
-                margin: 20px 15px;
-                padding: 24px;
-            }
-
-            .certificate-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="folder-style.css">
 </head>
 <body>
 
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-orb" id="cursorOrb"></div>
+
     <div class="notion-container">
-        <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
+
+        <a href="index.html#portfolio" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
         <h1>౨ৎ Certificates</h1>
-        <p style="color: #b0a4af; margin-bottom: 25px;">Preview photos of my e-certificates, workshops, and completed courses.</p>
 
-        <div class="certificate-list">
-            <div class="certificate-item">
-                <div class="certificate-info">
-                    <img src="Certificate1.png" alt="Certificate 1 Preview" class="certificate-thumb">
-                    <div>
-                        <h3>Certificate Title Here</h3>
-                        <div class="certificate-meta">Issuing Organization • Year</div>
-                    </div>
+        <p class="page-description">
+            Preview photos of my e-certificates, workshops, and completed courses.
+        </p>
+
+        <div class="certificate-grid">
+
+            <!-- Certificate 1 -->
+            <div class="certificate-card">
+
+                <a href="Certificate1.png" target="_blank">
+                    <img src="Certificate1.png"
+                         alt="First Certificate">
+                </a>
+
+                <div class="certificate-details">
+                    <h3>Certificate Title Here</h3>
+
+                    <p class="certificate-meta">
+                        Issuing Organization • Year
+                    </p>
+
+                    <a href="Certificate1.png"
+                       target="_blank"
+                       class="doc-btn">
+                        View Certificate
+                    </a>
                 </div>
-                <a href="Certificate1.png" target="_blank" class="doc-btn">View Image</a>
+
             </div>
 
-            <div class="certificate-item">
-                <div class="certificate-info">
-                    <img src="Certificate2.png" alt="Certificate 2 Preview" class="certificate-thumb">
-                    <div>
-                        <h3>Second Certificate Title</h3>
-                        <div class="certificate-meta">Issuing Organization • Year</div>
-                    </div>
+
+            <!-- Certificate 2 -->
+            <div class="certificate-card">
+
+                <a href="Certificate2.png" target="_blank">
+                    <img src="Certificate2.png"
+                         alt="Second Certificate">
+                </a>
+
+                <div class="certificate-details">
+                    <h3>Second Certificate Title</h3>
+
+                    <p class="certificate-meta">
+                        Issuing Organization • Year
+                    </p>
+
+                    <a href="Certificate2.png"
+                       target="_blank"
+                       class="doc-btn">
+                        View Certificate
+                    </a>
                 </div>
-                <a href="Certificate2.png" target="_blank" class="doc-btn">View Image</a>
+
             </div>
+
         </div>
 
     </div>
+
+    <div class="page-footer">
+        DCIT 26 Academic Portfolio <br>
+        Jenefer Z. Ignacio | BSCS - 3A
+    </div>
+
+    <button type="button" class="scroll-top-btn" id="scrollTopBtn"
+            aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <script src="folder-effects.js"></script>
+
 </body>
 </html>
