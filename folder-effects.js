@@ -13,14 +13,22 @@ let currentY = 0;
 let lastDustX = 0;
 let lastDustY = 0;
 
-if (window.matchMedia("(pointer: fine)").matches) {
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
-    document.addEventListener("mousemove", (e) => {
+function initializeFairyCursor() {
+
+    if (!cursorGlow || !cursorOrb || !finePointer.matches) {
+        return;
+    }
+
+    document.addEventListener("pointermove", (e) => {
+
+        if (e.pointerType === "touch") return;
+
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        if (cursorGlow) cursorGlow.style.opacity = "1";
-        if (cursorOrb) cursorOrb.style.opacity = "1";
+        document.body.classList.add("cursor-ready");
 
         if (
             Math.abs(mouseX - lastDustX) > 8 ||
@@ -32,13 +40,26 @@ if (window.matchMedia("(pointer: fine)").matches) {
         }
     });
 
-    document.addEventListener("mouseleave", () => {
-        if (cursorGlow) cursorGlow.style.opacity = "0";
-        if (cursorOrb) cursorOrb.style.opacity = "0";
+    document.addEventListener("pointerleave", (e) => {
+        if (e.pointerType === "touch") return;
+        document.body.classList.remove("cursor-ready");
+    });
+
+    window.addEventListener("blur", () => {
+        document.body.classList.remove("cursor-ready");
+    });
+
+    window.addEventListener("focus", () => {
+        document.body.classList.remove("cursor-ready");
     });
 }
 
+initializeFairyCursor();
+
 function createDust(x, y) {
+
+    if (!finePointer.matches) return;
+
     const dust = document.createElement("div");
     dust.className = "cursor-dust";
 
@@ -58,6 +79,7 @@ function createDust(x, y) {
 }
 
 function animateGlow() {
+
     currentX += (mouseX - currentX) * 0.12;
     currentY += (mouseY - currentY) * 0.12;
 
@@ -779,8 +801,6 @@ document.querySelectorAll("[data-certificate]").forEach(img => {
 
 });
 
-
-
 /* =========================
    CONNECT CERTIFICATE BUTTONS
 ========================= */
@@ -799,15 +819,3 @@ document.querySelectorAll("[data-certificate-open]").forEach(button => {
     });
 
 });
-
-// ===== FAIRY CURSOR INITIALIZATION FIX =====
-
-document.addEventListener("mousemove", () => {
-    document.body.classList.add("cursor-ready");
-}, { once: true });
-
-document.addEventListener("mouseleave", () => {
-    document.body.classList.remove("cursor-ready");
-});
-
-
