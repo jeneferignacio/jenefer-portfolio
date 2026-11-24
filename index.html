@@ -42,16 +42,7 @@
             overflow-x: hidden;
             width: 100%;
             box-sizing: border-box;
-            /* Custom image cursor left commented out while testing the orb:
-            cursor: url('cursor-wand.png') 8 4, auto;
-            */
         }
-
-        /*
-        a, button, .notion-card {
-            cursor: url('cursor-wand-hover.png') 8 4, pointer;
-        }
-        */
 
         *, *::before, *::after {
             box-sizing: border-box;
@@ -63,20 +54,20 @@
             outline-offset: 3px;
         }
 
-        /* Compact, focused pink cursor orb */
+        /* Cursor aura */
         .cursor-glow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 260px;
-            height: 260px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             background: radial-gradient(
                 circle at center,
-                rgba(255, 179, 209, 0.25) 0%,
-                rgba(255, 128, 191, 0.15) 35%,
-                rgba(255, 128, 191, 0.04) 60%,
-                rgba(255, 128, 191, 0) 75%
+                rgba(255, 220, 240, 0.18) 0%,
+                rgba(255, 128, 191, 0.12) 30%,
+                rgba(255, 128, 191, 0.05) 55%,
+                transparent 75%
             );
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -86,6 +77,76 @@
             will-change: left, top;
         }
 
+        /* Magical sparkle orb cursor */
+        .cursor-orb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            opacity: 0;
+            background: radial-gradient(
+                circle,
+                #ffffff 0%,
+                #ffe8f4 25%,
+                #ffb3d1 55%,
+                rgba(255, 128, 191, 0.5) 75%,
+                transparent 100%
+            );
+            box-shadow:
+                0 0 5px #ffffff,
+                0 0 10px #ffb3d1,
+                0 0 20px #ff80bf,
+                0 0 35px rgba(255, 128, 191, 0.65);
+            transition: opacity 0.2s ease, scale 0.2s ease;
+        }
+
+        /* Outer magical ring */
+        .cursor-orb::before {
+            content: "";
+            position: absolute;
+            inset: -7px;
+            border: 1px solid rgba(255, 179, 209, 0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 128, 191, 0.3);
+        }
+
+        /* Bright center */
+        .cursor-orb::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            background: white;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px white, 0 0 15px #ff80bf;
+        }
+
+        /* Cursor reacts to clickable elements */
+        .cursor-orb.hovering {
+            scale: 1.35;
+            box-shadow:
+                0 0 7px #ffffff,
+                0 0 15px #ffb3d1,
+                0 0 28px #ff80bf,
+                0 0 45px rgba(255, 128, 191, 0.8);
+        }
+
+        /* Hide default mouse cursor on desktop */
+        @media (hover: hover) and (pointer: fine) {
+            body, a, button {
+                cursor: none !important;
+            }
+        }
+
+        /* Sparkle particles */
         .cursor-sparkle {
             position: fixed;
             pointer-events: none;
@@ -396,15 +457,18 @@
             html {
                 scroll-behavior: auto;
             }
+
             section,
             .notion-card,
             .notion-card::after,
             .card-img,
             .cursor-glow,
+            .cursor-orb,
             .cursor-sparkle {
                 transition: none !important;
                 animation: none !important;
             }
+
             section {
                 opacity: 1;
                 transform: none;
@@ -413,6 +477,7 @@
 
         @media (hover: none) {
             .cursor-glow,
+            .cursor-orb,
             .cursor-sparkle {
                 display: none;
             }
@@ -523,6 +588,7 @@
 <body>
 
     <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-orb" id="cursorOrb"></div>
 
     <div class="gif-banner"></div>
 
@@ -611,8 +677,10 @@
 
     <script>
         const glow = document.getElementById('cursorGlow');
+        const orb = document.getElementById('cursorOrb');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
         const sections = document.querySelectorAll('section');
+
         let mouseX = 0, mouseY = 0;
         let currentX = 0, currentY = 0;
         let lastSparkleX = 0, lastSparkleY = 0;
@@ -625,6 +693,9 @@
             mouseX = e.clientX;
             mouseY = e.clientY;
 
+            orb.style.left = `${mouseX}px`;
+            orb.style.top = `${mouseY}px`;
+
             if (!isVisible) {
                 isVisible = true;
                 currentX = mouseX;
@@ -632,11 +703,13 @@
                 lastSparkleX = mouseX;
                 lastSparkleY = mouseY;
                 glow.style.opacity = '1';
+                orb.style.opacity = '1';
             }
 
             if (!prefersReducedMotion) {
                 const dist = Math.hypot(mouseX - lastSparkleX, mouseY - lastSparkleY);
-                if (dist > 42) {
+
+                if (dist > 30) {
                     spawnSparkle(mouseX, mouseY);
                     lastSparkleX = mouseX;
                     lastSparkleY = mouseY;
@@ -647,14 +720,27 @@
         document.addEventListener('mouseleave', () => {
             isVisible = false;
             glow.style.opacity = '0';
+            orb.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .notion-card')) {
+                orb.classList.add('hovering');
+            } else {
+                orb.classList.remove('hovering');
+            }
         });
 
         function spawnSparkle(x, y) {
             const sparkle = document.createElement('span');
             sparkle.className = 'cursor-sparkle';
+
+            /* Fixed the sparkleGlyphs variable name */
             sparkle.textContent = sparkleGlyphs[Math.floor(Math.random() * sparkleGlyphs.length)];
+
             sparkle.style.left = `${x + (Math.random() * 14 - 7)}px`;
             sparkle.style.top = `${y + (Math.random() * 14 - 7)}px`;
+
             document.body.appendChild(sparkle);
 
             sparkle.addEventListener('animationend', () => {
@@ -665,8 +751,10 @@
         function animateGlow() {
             currentX += (mouseX - currentX) * 0.15;
             currentY += (mouseY - currentY) * 0.15;
+
             glow.style.left = `${currentX}px`;
             glow.style.top = `${currentY}px`;
+
             requestAnimationFrame(animateGlow);
         }
 
@@ -681,7 +769,10 @@
         }, { passive: true });
 
         scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
         });
 
         if (prefersReducedMotion || !('IntersectionObserver' in window)) {
@@ -698,6 +789,7 @@
                 },
                 { threshold: 0.12 }
             );
+
             sections.forEach((sec) => observer.observe(sec));
         }
     </script>
