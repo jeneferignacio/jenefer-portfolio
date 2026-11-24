@@ -767,3 +767,20 @@ a:focus-visible {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* =========================
+   CERTIFICATE CATEGORY LABEL
+========================= */
+
+.certificate-number {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-pink);
+    opacity: 0.85;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
