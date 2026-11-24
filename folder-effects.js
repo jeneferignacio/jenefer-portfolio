@@ -21,6 +21,11 @@ function initializeFairyCursor() {
         return;
     }
 
+    // Move cursor elements to the end of the body
+    // so they can appear above the PDF/image viewer
+    document.body.appendChild(cursorGlow);
+    document.body.appendChild(cursorOrb);
+
     document.addEventListener("pointermove", (e) => {
 
         if (e.pointerType === "touch") return;
@@ -49,9 +54,6 @@ function initializeFairyCursor() {
         document.body.classList.remove("cursor-ready");
     });
 
-    window.addEventListener("focus", () => {
-        document.body.classList.remove("cursor-ready");
-    });
 }
 
 initializeFairyCursor();
