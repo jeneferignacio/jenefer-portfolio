@@ -10,32 +10,64 @@
             color: #1a1518;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 11px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1518;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff80bf;
+            border-radius: 999px;
+            border: 2px solid #1a1518;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffb3d1;
+        }
+
         body {
             background-color: #1a1518;
             color: #fce4ec;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
             position: relative;
             overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        /* Dual-layer ambient pink glow */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Compact, focused pink cursor glow */
         .cursor-glow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 520px;
-            height: 520px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
-            background:
-                radial-gradient(circle at center, rgba(255, 179, 209, 0.22) 0%, rgba(255, 128, 191, 0.14) 28%, rgba(255, 128, 191, 0.04) 55%, rgba(255, 128, 191, 0) 72%);
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 179, 209, 0.25) 0%,
+                rgba(255, 128, 191, 0.15) 35%,
+                rgba(255, 128, 191, 0.04) 60%,
+                rgba(255, 128, 191, 0) 75%
+            );
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 0;
             opacity: 0;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
             will-change: left, top;
         }
 
@@ -64,7 +96,8 @@
         .gif-banner,
         header,
         section,
-        .page-footer {
+        .page-footer,
+        .scroll-top-btn {
             position: relative;
             z-index: 1;
         }
@@ -178,8 +211,9 @@
         .bubble-greeting {
             color: #ff80bf;
             font-size: 1.8rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 20px;
         }
 
         .about-text {
@@ -229,8 +263,7 @@
         .notion-card {
             position: relative;
             flex: 0 1 calc(50% - 13px);
-            box-sizing: border-box;
-            background-color: rgba(26, 20, 23, 0.84);
+            background-color: rgba(26, 20, 23, 0.86);
             backdrop-filter: blur(6px);
             border: 1px solid #4a333b;
             border-radius: 12px;
@@ -241,7 +274,6 @@
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        /* Subtle light sweep across card on hover */
         .notion-card::after {
             content: "";
             position: absolute;
@@ -301,6 +333,43 @@
             border-top: 1px solid #2d242b;
         }
 
+        /* Back-to-top floating button */
+        .scroll-top-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #231c21;
+            color: #ffb3d1;
+            border: 1px solid #ff80bf;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            z-index: 10;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #ff80bf;
+            color: #1a1518;
+            box-shadow: 0 0 16px rgba(255, 128, 191, 0.5);
+        }
+
         @media (hover: none) {
             .cursor-glow,
             .cursor-sparkle {
@@ -309,28 +378,103 @@
         }
 
         @media (max-width: 768px) {
+            .gif-banner {
+                height: 150px;
+            }
+
+            header {
+                padding: 20px 16px 16px;
+            }
+
             .header-logo img {
                 margin-right: 0;
+                max-width: 310px;
+            }
+
+            section {
+                padding: 36px 16px;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            #portfolio .subtitle {
+                text-align: center;
             }
 
             .about-flex-wrapper {
                 flex-direction: column;
                 text-align: center;
-                gap: 24px;
+                gap: 20px;
             }
 
             .profile-pic {
-                width: 220px;
-                height: 220px;
+                width: 210px;
+                height: 210px;
                 margin-right: 0;
+            }
+
+            .bubble-greeting {
+                font-size: 1.45rem;
+                margin-bottom: 14px;
+            }
+
+            .about-text {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 20px;
             }
 
             .social-icons {
                 justify-content: center;
+                gap: 16px;
+            }
+
+            .social-icons img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .grid-container {
+                gap: 18px;
             }
 
             .notion-card {
                 flex: 0 1 100%;
+            }
+
+            .card-img {
+                height: 155px;
+            }
+
+            .scroll-top-btn {
+                right: 14px;
+                bottom: 14px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gif-banner {
+                height: 125px;
+            }
+
+            .header-logo img {
+                max-width: 250px;
+            }
+
+            nav a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .profile-pic {
+                width: 180px;
+                height: 180px;
             }
         }
     </style>
@@ -422,8 +566,11 @@
         Jenefer Z. Ignacio | BSCS - 3A <br>
     </div>
 
+    <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Back to top" title="Back to top">↑</button>
+
     <script>
         const glow = document.getElementById('cursorGlow');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
         let mouseX = 0, mouseY = 0;
         let currentX = 0, currentY = 0;
         let lastSparkleX = 0, lastSparkleY = 0;
@@ -479,6 +626,18 @@
         }
 
         animateGlow();
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 320) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 
 </body>
