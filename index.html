@@ -16,9 +16,9 @@
 
         .gif-banner {
             width: 100%;
-            height: 200px; 
-            background-image: url('homepage-banner.gif'); 
-            background-size: cover; 
+            height: 200px;
+            background-image: url('homepage-banner.gif');
+            background-size: cover;
             background-position: center 63%;
         }
 
@@ -36,7 +36,7 @@
             max-width: 440px;
             width: 100%;
             height: auto;
-            display: inline-block; 
+            display: inline-block;
             margin-right: 60px;
         }
 
@@ -52,6 +52,7 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -91,13 +92,13 @@
 
         .about-flex-wrapper {
             display: flex;
-            flex-direction: row; 
-            align-items: center; 
-            gap: 40px; 
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
         }
 
         .profile-pic {
-            width: 300px;  
+            width: 300px;
             height: 300px;
             flex-shrink: 0;
             display: flex;
@@ -113,18 +114,18 @@
         }
 
         .bubble-greeting {
-            color: #ff80bf;  
+            color: #ff80bf;
             font-size: 1.8rem;
             line-height: 1.8;
             margin-bottom: 25px;
         }
 
         .about-text {
-            color: #fce4ec; 
-            font-size: 1.15rem; 
-            line-height: 1.8; 
+            color: #fce4ec;
+            font-size: 1.15rem;
+            line-height: 1.8;
             margin-bottom: 25px;
-            font-weight: 400; 
+            font-weight: 400;
         }
 
         .social-icons {
@@ -132,6 +133,7 @@
             gap: 20px;
             align-items: center;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .social-icons a {
@@ -178,7 +180,7 @@
 
         .card-img {
             width: 100%;
-            height: 140px; 
+            height: 140px;
             object-fit: cover;
             display: block;
         }
@@ -200,12 +202,38 @@
             margin: 0 auto;
             border-top: 1px solid #2d242b;
         }
+
+        @media (max-width: 768px) {
+            .header-logo img {
+                margin-right: 0;
+            }
+
+            .about-flex-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .profile-pic {
+                width: 220px;
+                height: 220px;
+                margin-right: 0;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="gif-banner"></div>
-    
+
     <header id="home">
         <div class="header-logo">
             <img src="font.png" alt="Jenefer's Portfolio">
@@ -227,8 +255,8 @@
             <div class="about-text-content">
                 <h1 class="bubble-greeting">Hello! I am Jenefer! ❀</h1>
                 <p class="about-text">
-                    I am a 3rd-year student at Cavite State University - Silang Campus. 
-                    I'm also an aspiring game developer, and I love creating my own characters through digital art as well! 
+                    I am a 3rd-year student at Cavite State University - Silang Campus.
+                    I'm also an aspiring game developer, and I love creating my own characters through digital art as well!
                     I chose Computer Science in the hopes of combining my interests in games with my creativity to build interactive worlds and characters.
                 </p>
 
@@ -251,9 +279,9 @@
     </section>
 
     <section id="portfolio">
-        <h2>Portfolio Dashboard! ❀ </h2>
+        <h2>Portfolio Dashboard! ❀</h2>
         <p class="subtitle">Click a folder to view my class records and documents.</p>
-        
+
         <div class="grid-container">
             <a href="activities.html" class="notion-card">
                 <img src="gif1.gif" alt="Activity Banner" class="card-img">
@@ -274,8 +302,12 @@
                 <img src="gif4.gif" alt="Project Banner" class="card-img">
                 <div class="card-title">౨ৎ Projects</div>
             </a>
+
+            <a href="certificates.html" class="notion-card">
+                <img src="gif5.gif" alt="Certificates Banner" class="card-img">
+                <div class="card-title">౨ৎ Certificates</div>
+            </a>
         </div>
-        <br>
     </section>
 
     <div class="page-footer">
