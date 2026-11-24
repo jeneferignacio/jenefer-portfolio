@@ -4,68 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exams - Jenefer's Portfolio</title>
-
+    <title>Exams | Jenefer's Portfolio</title>
     <link rel="stylesheet" href="folder-style.css">
 </head>
 <body>
 
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="cursor-orb" id="cursorOrb"></div>
+<div class="cursor-glow"></div>
+<div class="cursor-orb"></div>
 
-    <div class="notion-container">
+<main class="notion-container">
 
-        <a href="index.html#portfolio" class="back-btn">
-            ← Back to Dashboard
-        </a>
+    <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
 
-        <h1>౨ৎ Exams</h1>
+    <h1 class="page-title">✧ Exams</h1>
 
-        <p class="page-description">
-            All my major examination scores and results.
-        </p>
+    <p class="page-description">
+        My examination results and academic assessments.
+    </p>
 
-        <div class="file-list">
+    <div class="file-list">
 
-            <div class="file-card preview-card">
-
-                <img src="MidtermExam.png"
-                     alt="Midterm Examination Score"
-                     class="preview-image">
-
-                <div class="preview-card-content">
-                    <div>
-                        <span class="file-type">MIDTERM</span>
-                        <h3>Midterm Examination</h3>
-                        <p class="file-meta">
-                            Examination score record
-                        </p>
-                    </div>
-
-                    <a href="MidtermExam.png"
-                       target="_blank"
-                       class="doc-btn">
-                        View Full Image
-                    </a>
+        <!-- MIDTERM EXAM -->
+        <div class="file-card">
+            <div class="file-info">
+                <div class="file-icon">🖼</div>
+                <div class="file-details">
+                    <h3>Midterm Examination</h3>
+                    <p>DCIT 26 — Midterm Exam Result</p>
+                    <span class="file-type">Midterm</span>
                 </div>
-
             </div>
 
+            <div class="file-actions">
+                <a href="MidtermExam.png"
+                   class="doc-btn primary"
+                   data-viewer="image"
+                   data-src="MidtermExam.png"
+                   data-title="Midterm Examination">
+                    View Image
+                </a>
+            </div>
         </div>
 
     </div>
 
-    <div class="page-footer">
-        DCIT 26 Academic Portfolio <br>
+    <footer class="page-footer">
+        DCIT 26 Academic Portfolio<br>
         Jenefer Z. Ignacio | BSCS - 3A
-    </div>
+    </footer>
 
-    <button type="button" class="scroll-top-btn" id="scrollTopBtn"
-            aria-label="Back to top" title="Back to top">
-        ↑
-    </button>
+</main>
 
-    <script src="folder-effects.js"></script>
+<button class="scroll-top-btn" aria-label="Scroll to top">↑</button>
 
+<script src="folder-effects.js"></script>
 </body>
 </html>
