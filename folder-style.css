@@ -784,3 +784,41 @@ a:focus-visible {
     font-weight: 600;
 }
 
+/* ===== FAIRY CURSOR FIX ===== */
+
+@media (hover: hover) and (pointer: fine) {
+
+    html,
+    body,
+    body *,
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: none !important;
+    }
+
+    /* Hide fairy cursor before it initializes */
+    .cursor-glow,
+    .cursor-orb {
+        opacity: 0 !important;
+        visibility: hidden;
+    }
+
+    /* Show fairy cursor only after mouse movement */
+    body.cursor-ready .cursor-glow,
+    body.cursor-ready .cursor-orb {
+        opacity: 1 !important;
+        visibility: visible;
+    }
+}
+
+/* Normal cursor on touch devices */
+@media (hover: none), (pointer: coarse) {
+    .cursor-glow,
+    .cursor-orb {
+        display: none !important;
+    }
+}
+
