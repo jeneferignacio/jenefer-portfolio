@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,6 +77,58 @@
             opacity: 0;
             transition: opacity 0.5s ease;
             will-change: left, top;
+        }
+
+        /* Pink fairy orb cursor */
+        .cursor-orb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, #fff 0%, #fff4fa 28%, #ffc6df 58%, #ff80bf 100%);
+            box-shadow:
+                0 0 5px rgba(255, 255, 255, 0.95),
+                0 0 12px rgba(255, 179, 209, 0.85),
+                0 0 24px rgba(255, 128, 191, 0.55);
+            transition: opacity 0.25s ease, width 0.25s ease, height 0.25s ease, box-shadow 0.25s ease;
+            will-change: left, top;
+        }
+
+        .cursor-orb::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 214, 233, 0.24) 0%, rgba(255, 128, 191, 0.12) 45%, transparent 75%);
+            filter: blur(2px);
+        }
+
+        .cursor-orb.hovering {
+            width: 17px;
+            height: 17px;
+            box-shadow:
+                0 0 6px rgba(255, 255, 255, 1),
+                0 0 16px rgba(255, 179, 209, 0.95),
+                0 0 30px rgba(255, 128, 191, 0.75);
+        }
+
+        .cursor-orb.hovering::before {
+            inset: -12px;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% { opacity: 0.92; }
+            50% { opacity: 1; }
+        }
+
+        .cursor-orb {
+            animation: orbPulse 2.4s ease-in-out infinite;
         }
 
         /* Hide the normal cursor on desktop */
@@ -428,6 +481,7 @@
             .notion-card::after,
             .card-img,
             .cursor-glow,
+            .cursor-orb,
             .cursor-dust {
                 transition: none !important;
                 animation: none !important;
@@ -442,6 +496,7 @@
         /* Hide cursor effects on touch devices */
         @media (hover: none) {
             .cursor-glow,
+            .cursor-orb,
             .cursor-dust {
                 display: none;
             }
@@ -554,6 +609,7 @@
 <body>
 
     <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-orb" id="cursorOrb"></div>
 
     <div class="gif-banner"></div>
 
@@ -647,6 +703,7 @@
 
     <script>
         const glow = document.getElementById('cursorGlow');
+        const orb = document.getElementById('cursorOrb');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
         const sections = document.querySelectorAll('section');
 
@@ -669,6 +726,11 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+            orb.style.opacity = '1';
+
+            // Make the orb glow brighter over clickable elements
+            const hoveredElement = e.target.closest('a, button, [role="button"]');
+            orb.classList.toggle('hovering', !!hoveredElement);
 
             if (!isVisible) {
                 isVisible = true;
@@ -693,6 +755,8 @@
         document.addEventListener('mouseleave', () => {
             isVisible = false;
             glow.style.opacity = '0';
+            orb.style.opacity = '0';
+            orb.classList.remove('hovering');
         });
 
         /* Create drifting glitter particles */
@@ -745,6 +809,10 @@
 
             glow.style.left = `${currentX}px`;
             glow.style.top = `${currentY}px`;
+
+            // The orb tracks the pointer more closely than the ambient glow
+            orb.style.left = `${mouseX}px`;
+            orb.style.top = `${mouseY}px`;
 
             requestAnimationFrame(animateGlow);
         }
