@@ -1,81 +1,141 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzes - Jenefer's Portfolio</title>
-    <style>
-        body { background-color: #1a1518; color: #fce4ec; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        .notion-container { max-width: 800px; margin: 50px auto; background-color: #231c21; border: 1px solid #3d3039; border-radius: 12px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #ff80bf; font-size: 2.2rem; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #3d3039; padding-bottom: 15px; }
-        .back-btn { display: inline-block; margin-bottom: 20px; color: #ffb3d1; text-decoration: none; font-weight: bold; background-color: #2d242b; padding: 8px 15px; border-radius: 8px; border: 1px solid #ff80bf; transition: 0.3s; }
-        .back-btn:hover { background-color: #ff80bf; color: #1a1518; }
-        
-        .quiz-list { margin-top: 25px; }
-        .quiz-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 128, 191, 0.2);
-        }
-        .quiz-item:last-child {
-            border-bottom: none;
-        }
-        .quiz-item h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: #fce4ec;
-        }
-        .doc-btn { 
-            background-color: #2d242b; 
-            color: #ffb3d1; 
-            border: 1px solid #ff80bf; 
-            padding: 8px 16px; 
-            border-radius: 20px; 
-            text-decoration: none; 
-            font-size: 14px; 
-            transition: all 0.3s ease; 
-            display: inline-block;
-            white-space: nowrap;
-        }
-        .doc-btn:hover { background-color: #ff80bf; color: #1a1518; }
-    </style>
+
+    <link rel="stylesheet" href="folder-style.css">
 </head>
 <body>
-  
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-orb" id="cursorOrb"></div>
+
     <div class="notion-container">
-        <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
+
+        <a href="index.html#portfolio" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
         <h1>౨ৎ Quizzes</h1>
-        <p style="color: #b0a4af; margin-bottom: 25px;">All my quiz scores.</p>
 
-        <div class="quiz-list">
-            <div class="quiz-item">
-                <h3>Summary of Midterms Quizzes</h3>
-                <a href="QuizSummary.png" target="_blank" class="doc-btn">View Image</a>
+        <p class="page-description">
+            All my quiz scores and assessments for the semester.
+        </p>
+
+        <div class="file-list">
+
+            <!-- Quiz Summary -->
+            <div class="file-card preview-card">
+                <img src="QuizSummary.png"
+                     alt="Midterm Quiz Summary"
+                     class="preview-image">
+
+                <div class="preview-card-content">
+                    <div>
+                        <span class="file-type">SUMMARY</span>
+                        <h3>Summary of Midterms Quizzes</h3>
+                    </div>
+
+                    <a href="QuizSummary.png" target="_blank" class="doc-btn">
+                        View Image
+                    </a>
+                </div>
             </div>
 
-            <div class="quiz-item">
-                <h3>Quiz 1 - Emerging Technologies</h3>
-                <a href="Quiz1.png" target="_blank" class="doc-btn">View Image</a>
+
+            <!-- Quiz 1 -->
+            <div class="file-card preview-card">
+                <img src="Quiz1.png"
+                     alt="Quiz 1 Preview"
+                     class="preview-image">
+
+                <div class="preview-card-content">
+                    <div>
+                        <span class="file-type">QUIZ 01</span>
+                        <h3>Emerging Technologies</h3>
+                    </div>
+
+                    <a href="Quiz1.png" target="_blank" class="doc-btn">
+                        View Image
+                    </a>
+                </div>
             </div>
 
-            <div class="quiz-item">
-                <h3>Quiz 2 - Requirement Analysis & Unified Modeling Language</h3>
-                <a href="Quiz2.png" target="_blank" class="doc-btn">View Image</a>
+
+            <!-- Quiz 2 -->
+            <div class="file-card preview-card">
+                <img src="Quiz2.png"
+                     alt="Quiz 2 Preview"
+                     class="preview-image">
+
+                <div class="preview-card-content">
+                    <div>
+                        <span class="file-type">QUIZ 02</span>
+                        <h3>Requirement Analysis &amp; UML</h3>
+                    </div>
+
+                    <a href="Quiz2.png" target="_blank" class="doc-btn">
+                        View Image
+                    </a>
+                </div>
             </div>
 
-            <div class="quiz-item">
-                <h3>Quiz 3 - The SOLID Principles</h3>
-                <a href="Quiz3.png" target="_blank" class="doc-btn">View Image</a>
+
+            <!-- Quiz 3 -->
+            <div class="file-card preview-card">
+                <img src="Quiz3.png"
+                     alt="Quiz 3 Preview"
+                     class="preview-image">
+
+                <div class="preview-card-content">
+                    <div>
+                        <span class="file-type">QUIZ 03</span>
+                        <h3>The SOLID Principles</h3>
+                    </div>
+
+                    <a href="Quiz3.png" target="_blank" class="doc-btn">
+                        View Image
+                    </a>
+                </div>
             </div>
 
-            <div class="quiz-item">
-                <h3>Long Quiz - Emerging Technologies, Requirement Analysis, <br> SOLID Principles & Design Patterns </h3>
-                <a href="LongQuiz.png" target="_blank" class="doc-btn">View Image</a>
+
+            <!-- Long Quiz -->
+            <div class="file-card preview-card">
+                <img src="LongQuiz.png"
+                     alt="Long Quiz Preview"
+                     class="preview-image">
+
+                <div class="preview-card-content">
+                    <div>
+                        <span class="file-type">LONG QUIZ</span>
+                        <h3>Emerging Technologies, Requirement Analysis, SOLID Principles &amp; Design Patterns</h3>
+                    </div>
+
+                    <a href="LongQuiz.png" target="_blank" class="doc-btn">
+                        View Image
+                    </a>
+                </div>
             </div>
+
         </div>
 
     </div>
+
+    <div class="page-footer">
+        DCIT 26 Academic Portfolio <br>
+        Jenefer Z. Ignacio | BSCS - 3A
+    </div>
+
+    <button type="button" class="scroll-top-btn" id="scrollTopBtn"
+            aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <script src="folder-effects.js"></script>
+
 </body>
 </html>
