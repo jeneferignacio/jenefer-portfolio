@@ -56,121 +56,80 @@
             outline-offset: 3px;
         }
 
-        /* Soft fairy-like cursor glow */
+        /* Soft fairy glow that follows the cursor */
         .cursor-glow {
             position: fixed;
             top: 0;
             left: 0;
-            width: 170px;
-            height: 170px;
+            width: 190px;
+            height: 190px;
             border-radius: 50%;
             background: radial-gradient(
-                circle at center,
-                rgba(255, 235, 247, 0.12) 0%,
-                rgba(255, 179, 209, 0.10) 25%,
-                rgba(255, 128, 191, 0.05) 50%,
+                circle,
+                rgba(255, 239, 248, 0.10) 0%,
+                rgba(255, 196, 221, 0.08) 25%,
+                rgba(255, 128, 191, 0.035) 50%,
                 transparent 75%
             );
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 0;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
             will-change: left, top;
         }
 
-        /* Tiny floating fairy light */
-        .cursor-orb {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            opacity: 0;
-            background: radial-gradient(
-                circle,
-                #fff9fd 0%,
-                #ffeaf5 30%,
-                #ffc6df 60%,
-                rgba(255, 179, 209, 0.15) 100%
-            );
-            box-shadow:
-                0 0 5px rgba(255, 255, 255, 0.9),
-                0 0 10px rgba(255, 179, 209, 0.7),
-                0 0 20px rgba(255, 128, 191, 0.35);
-            transition: opacity 0.3s ease, scale 0.35s ease;
-        }
-
-        /* Very faint fairy ring */
-        .cursor-orb::before {
-            content: "";
-            position: absolute;
-            inset: -5px;
-            border: 1px solid rgba(255, 220, 240, 0.22);
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(255, 179, 209, 0.1);
-        }
-
-        /* Soft glowing center */
-        .cursor-orb::after {
-            content: "";
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            top: 50%;
-            left: 50%;
-            border-radius: 50%;
-            background: white;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 5px white, 0 0 9px #ffb3d1;
-        }
-
-        /* A gentle glow when hovering over links and cards */
-        .cursor-orb.hovering {
-            scale: 1.2;
-            box-shadow:
-                0 0 6px rgba(255, 255, 255, 0.9),
-                0 0 13px rgba(255, 179, 209, 0.75),
-                0 0 25px rgba(255, 128, 191, 0.45);
-        }
-
-        /* Hide normal cursor on desktop */
+        /* Hide the normal cursor on desktop */
         @media (hover: hover) and (pointer: fine) {
             body, a, button {
                 cursor: none !important;
             }
         }
 
-        /* Sparkle particles */
-        .cursor-sparkle {
+        /* Floating fairy dust particles */
+        .cursor-dust {
             position: fixed;
             pointer-events: none;
-            color: #ffb3d1;
-            font-size: 12px;
-            text-shadow: 0 0 8px rgba(255, 128, 191, 0.7);
-            z-index: 2;
-            transform: translate(-50%, -50%);
-            animation: sparkleFade 1s ease-out forwards;
+            z-index: 9999;
+            border-radius: 50%;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            background: var(--dust-color, #ffeaf5);
+            box-shadow:
+                0 0 var(--dust-glow, 5px) var(--dust-color, #ffeaf5);
+            animation: dustFloat var(--dust-duration, 1.2s) ease-out forwards;
+            will-change: transform, opacity;
         }
 
-        @keyframes sparkleFade {
+        @keyframes dustFloat {
             0% {
-                opacity: 0.9;
-                transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+                opacity: 0;
+                transform: translate(0, 0) scale(0.4);
             }
 
-            35% {
-                opacity: 0.8;
-                transform: translate(-50%, -50%) scale(1) rotate(20deg);
+            15% {
+                opacity: var(--dust-opacity, 0.8);
+                transform: translate(
+                    calc(var(--dust-drift-x) * 0.15),
+                    calc(var(--dust-drift-y) * 0.15)
+                ) scale(1);
+            }
+
+            55% {
+                opacity: var(--dust-opacity, 0.8);
+                transform: translate(
+                    calc(var(--dust-drift-x) * 0.6),
+                    calc(var(--dust-drift-y) * 0.6)
+                ) scale(0.85);
             }
 
             100% {
                 opacity: 0;
-                transform: translate(-50%, calc(-50% - 24px)) scale(0.6) rotate(55deg);
+                transform: translate(
+                    var(--dust-drift-x),
+                    var(--dust-drift-y)
+                ) scale(0.2);
             }
         }
 
@@ -363,7 +322,7 @@
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        /* Subtle shine when hovering over cards */
+        /* Gentle shine on the cards */
         .notion-card::after {
             content: "";
             position: absolute;
@@ -470,8 +429,7 @@
             .notion-card::after,
             .card-img,
             .cursor-glow,
-            .cursor-orb,
-            .cursor-sparkle {
+            .cursor-dust {
                 transition: none !important;
                 animation: none !important;
             }
@@ -485,8 +443,7 @@
         /* Hide cursor effects on touch devices */
         @media (hover: none) {
             .cursor-glow,
-            .cursor-orb,
-            .cursor-sparkle {
+            .cursor-dust {
                 display: none;
             }
         }
@@ -598,7 +555,6 @@
 <body>
 
     <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="cursor-orb" id="cursorOrb"></div>
 
     <div class="gif-banner"></div>
 
@@ -692,42 +648,45 @@
 
     <script>
         const glow = document.getElementById('cursorGlow');
-        const orb = document.getElementById('cursorOrb');
         const scrollTopBtn = document.getElementById('scrollTopBtn');
         const sections = document.querySelectorAll('section');
 
         let mouseX = 0, mouseY = 0;
         let currentX = 0, currentY = 0;
-        let lastSparkleX = 0, lastSparkleY = 0;
+        let lastDustX = 0, lastDustY = 0;
         let isVisible = false;
 
-        const sparkleGlyphs = ['✦', '❀', '✧', '⋆'];
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        /* Dust colors */
+        const dustColors = [
+            '#fff9fd',
+            '#ffeaf5',
+            '#ffd6e9',
+            '#ffc6df',
+            '#ffb3d1'
+        ];
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
 
-            orb.style.left = `${mouseX}px`;
-            orb.style.top = `${mouseY}px`;
-
             if (!isVisible) {
                 isVisible = true;
                 currentX = mouseX;
                 currentY = mouseY;
-                lastSparkleX = mouseX;
-                lastSparkleY = mouseY;
+                lastDustX = mouseX;
+                lastDustY = mouseY;
                 glow.style.opacity = '1';
-                orb.style.opacity = '1';
             }
 
             if (!prefersReducedMotion) {
-                const dist = Math.hypot(mouseX - lastSparkleX, mouseY - lastSparkleY);
+                const dist = Math.hypot(mouseX - lastDustX, mouseY - lastDustY);
 
-                if (dist > 26) {
-                    spawnSparkle(mouseX, mouseY);
-                    lastSparkleX = mouseX;
-                    lastSparkleY = mouseY;
+                if (dist > 8) {
+                    spawnDust(mouseX, mouseY);
+                    lastDustX = mouseX;
+                    lastDustY = mouseY;
                 }
             }
         });
@@ -735,42 +694,55 @@
         document.addEventListener('mouseleave', () => {
             isVisible = false;
             glow.style.opacity = '0';
-            orb.style.opacity = '0';
         });
 
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('a, button, .notion-card')) {
-                orb.classList.add('hovering');
-            } else {
-                orb.classList.remove('hovering');
-            }
-        });
+        /* Create drifting glitter particles */
+        function spawnDust(x, y) {
+            const dust = document.createElement('span');
+            dust.className = 'cursor-dust';
 
-        function spawnSparkle(x, y) {
-            const sparkle = document.createElement('span');
-            sparkle.className = 'cursor-sparkle';
+            /* Random particle size */
+            const size = Math.random() * 3 + 1;
 
-            sparkle.textContent = sparkleGlyphs[Math.floor(Math.random() * sparkleGlyphs.length)];
+            /* Random floating direction */
+            const driftX = Math.random() * 70 - 35;
+            const driftY = Math.random() * 70 - 35;
 
-            /* Randomize the sparkle's size and position */
-            const size = Math.random() * 7 + 9;
-            const offsetX = Math.random() * 18 - 9;
-            const offsetY = Math.random() * 18 - 9;
+            /* Random lifetime */
+            const duration = Math.random() * 1.5 + 0.8;
 
-            sparkle.style.fontSize = `${size}px`;
-            sparkle.style.left = `${x + offsetX}px`;
-            sparkle.style.top = `${y + offsetY}px`;
+            /* Random brightness */
+            const opacity = Math.random() * 0.5 + 0.3;
 
-            document.body.appendChild(sparkle);
+            /* Random color */
+            const color = dustColors[Math.floor(Math.random() * dustColors.length)];
 
-            sparkle.addEventListener('animationend', () => {
-                sparkle.remove();
+            /* Random glow */
+            const glowSize = Math.random() * 7 + 2;
+
+            dust.style.width = `${size}px`;
+            dust.style.height = `${size}px`;
+            dust.style.left = `${x + (Math.random() * 16 - 8)}px`;
+            dust.style.top = `${y + (Math.random() * 16 - 8)}px`;
+
+            dust.style.setProperty('--dust-color', color);
+            dust.style.setProperty('--dust-glow', `${glowSize}px`);
+            dust.style.setProperty('--dust-duration', `${duration}s`);
+            dust.style.setProperty('--dust-drift-x', `${driftX}px`);
+            dust.style.setProperty('--dust-drift-y', `${driftY}px`);
+            dust.style.setProperty('--dust-opacity', opacity);
+
+            document.body.appendChild(dust);
+
+            dust.addEventListener('animationend', () => {
+                dust.remove();
             });
         }
 
+        /* Softly follow the cursor */
         function animateGlow() {
-            currentX += (mouseX - currentX) * 0.15;
-            currentY += (mouseY - currentY) * 0.15;
+            currentX += (mouseX - currentX) * 0.12;
+            currentY += (mouseY - currentY) * 0.12;
 
             glow.style.left = `${currentX}px`;
             glow.style.top = `${currentY}px`;
@@ -780,6 +752,7 @@
 
         animateGlow();
 
+        /* Show back-to-top button while scrolling */
         window.addEventListener('scroll', () => {
             if (window.scrollY > 320) {
                 scrollTopBtn.classList.add('visible');
@@ -795,6 +768,7 @@
             });
         });
 
+        /* Section reveal effect */
         if (prefersReducedMotion || !('IntersectionObserver' in window)) {
             sections.forEach((sec) => sec.classList.add('is-visible'));
         } else {
@@ -805,7 +779,7 @@
                             entry.target.classList.add('is-visible');
                             observer.unobserve(entry.target);
                         }
-                    });
+                    },
                 },
                 { threshold: 0.12 }
             );
