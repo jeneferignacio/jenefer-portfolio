@@ -210,6 +210,10 @@ viewer.innerHTML = `
 
 document.body.appendChild(viewer);
 
+// Keep fairy cursor above the viewer overlay
+if (cursorGlow) document.body.appendChild(cursorGlow);
+if (cursorOrb) document.body.appendChild(cursorOrb);
+
 const viewerTitle = viewer.querySelector("#viewerTitle");
 const viewerControls = viewer.querySelector("#viewerControls");
 const viewerContent = viewer.querySelector("#viewerContent");
