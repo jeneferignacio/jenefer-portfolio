@@ -12,6 +12,38 @@
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Soft pink cursor-following glow */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 128, 191, 0.16) 0%,
+                rgba(255, 128, 191, 0.06) 40%,
+                rgba(255, 128, 191, 0) 70%
+            );
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        /* Keep page content layered cleanly above the ambient glow */
+        .gif-banner,
+        header,
+        section,
+        .page-footer {
+            position: relative;
+            z-index: 1;
         }
 
         .gif-banner {
@@ -70,6 +102,7 @@
         nav a:hover {
             background-color: #ff80bf;
             color: #1a1518;
+            box-shadow: 0 0 18px rgba(255, 128, 191, 0.45);
         }
 
         section {
@@ -155,27 +188,32 @@
             opacity: 0.8;
         }
 
+        /* Centered Flex Layout so 5th card sits centered on bottom row */
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
             margin-top: 25px;
         }
 
         .notion-card {
-            background-color: #1a1417;
+            flex: 0 1 calc(50% - 13px);
+            box-sizing: border-box;
+            background-color: rgba(26, 20, 23, 0.92);
             border: 1px solid #4a333b;
             border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             text-decoration: none;
-            transition: transform 0.2s ease;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
         .notion-card:hover {
             transform: translateY(-5px);
             border-color: #ff80bf;
+            box-shadow: 0 8px 25px rgba(255, 128, 191, 0.2);
         }
 
         .card-img {
@@ -203,6 +241,12 @@
             border-top: 1px solid #2d242b;
         }
 
+        @media (hover: none) {
+            .cursor-glow {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-logo img {
                 margin-right: 0;
@@ -224,13 +268,15 @@
                 justify-content: center;
             }
 
-            .grid-container {
-                grid-template-columns: 1fr;
+            .notion-card {
+                flex: 0 1 100%;
             }
         }
     </style>
 </head>
 <body>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="gif-banner"></div>
 
@@ -314,6 +360,37 @@
         DCIT 26 Academic Portfolio <br>
         Jenefer Z. Ignacio | BSCS - 3A <br>
     </div>
+
+    <script>
+        const glow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+        let isVisible = false;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!isVisible) {
+                isVisible = true;
+                glow.style.opacity = '1';
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            isVisible = false;
+            glow.style.opacity = '0';
+        });
+
+        function animateGlow() {
+            currentX += (mouseX - currentX) * 0.14;
+            currentY += (mouseY - currentY) * 0.14;
+            glow.style.left = `${currentX}px`;
+            glow.style.top = `${currentY}px`;
+            requestAnimationFrame(animateGlow);
+        }
+
+        animateGlow();
+    </script>
 
 </body>
 </html>
