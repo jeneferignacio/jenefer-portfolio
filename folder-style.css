@@ -976,3 +976,26 @@ a:focus-visible {
         display: none !important;
     }
 }
+
+/* Fairy cursor must stay above the file viewer */
+@media (hover: hover) and (pointer: fine) {
+
+    .cursor-glow,
+    .cursor-orb,
+    .cursor-dust {
+        position: fixed !important;
+        pointer-events: none !important;
+    }
+
+    .cursor-glow {
+        z-index: 1000000 !important;
+    }
+
+    .cursor-orb {
+        z-index: 1000001 !important;
+    }
+
+    .cursor-dust {
+        z-index: 999999 !important;
+    }
+}
