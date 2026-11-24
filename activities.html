@@ -4,91 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activities - Jenefer's Portfolio</title>
-
+    <title>Activities | Jenefer's Portfolio</title>
     <link rel="stylesheet" href="folder-style.css">
 </head>
 <body>
 
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="cursor-orb" id="cursorOrb"></div>
+<div class="cursor-glow"></div>
+<div class="cursor-orb"></div>
 
-    <div class="notion-container">
+<main class="notion-container">
 
-        <a href="index.html#portfolio" class="back-btn">
-            ← Back to Dashboard
-        </a>
+    <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
 
-        <h1>౨ৎ Activities</h1>
+    <h1 class="page-title">✧ Activities</h1>
 
-        <p class="page-description">
-            All my weekly activities, laboratory outputs, and written reports.
-        </p>
+    <p class="page-description">
+        My activities, outputs, and documentation for the semester.
+    </p>
 
-        <div class="file-list">
+    <div class="file-list">
 
-            <!-- Module 1 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <span class="file-type">MODULE 1</span>
-                    <h3>Comprehensive Report</h3>
-                    <p class="file-meta">
-                        Application Development and Emerging Technologies
-                    </p>
-                </div>
-
-                <div class="file-actions">
-                    <a href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE REPORT.pdf"
-                       target="_blank" class="doc-btn">
-                        View PDF
-                    </a>
-
-                    <a href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE REPORT.docx"
-                       download class="doc-btn">
-                        Download DOCX
-                    </a>
+        <!-- MODULE 1 -->
+        <div class="file-card">
+            <div class="file-info">
+                <div class="file-icon">📄</div>
+                <div class="file-details">
+                    <h3>Module 1 — Comprehensive Report</h3>
+                    <p>Application Development and Emerging Technologies</p>
+                    <span class="file-type">Report</span>
                 </div>
             </div>
 
+            <div class="file-actions">
+                <a class="doc-btn primary"
+                   href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE REPORT.pdf"
+                   data-viewer="pdf"
+                   data-src="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE REPORT.pdf"
+                   data-title="Module 1 — Comprehensive Report">
+                    View PDF
+                </a>
 
-            <!-- Module 2 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <span class="file-type">MODULE 2</span>
-                    <h3>Comprehensive Interview Guide</h3>
-                    <p class="file-meta">
-                        Application Development and Emerging Technologies
-                    </p>
-                </div>
+                <a class="doc-btn"
+                   href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE REPORT.docx"
+                   download>
+                    Download DOCX
+                </a>
+            </div>
+        </div>
 
-                <div class="file-actions">
-                    <a href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE INTERVIEW GUIDE.pdf"
-                       target="_blank" class="doc-btn">
-                        View PDF
-                    </a>
-
-                    <a href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE INTERVIEW GUIDE.docx"
-                       download class="doc-btn">
-                        Download DOCX
-                    </a>
+        <!-- MODULE 2 -->
+        <div class="file-card">
+            <div class="file-info">
+                <div class="file-icon">📄</div>
+                <div class="file-details">
+                    <h3>Module 2 — Comprehensive Interview Guide</h3>
+                    <p>Application Development and Emerging Technologies</p>
+                    <span class="file-type">Interview Guide</span>
                 </div>
             </div>
 
+            <div class="file-actions">
+                <a class="doc-btn primary"
+                   href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE INTERVIEW GUIDE.pdf"
+                   data-viewer="pdf"
+                   data-src="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE INTERVIEW GUIDE.pdf"
+                   data-title="Module 2 — Comprehensive Interview Guide">
+                    View PDF
+                </a>
+
+                <a class="doc-btn"
+                   href="APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES COMPREHENSIVE INTERVIEW GUIDE.docx"
+                   download>
+                    Download DOCX
+                </a>
+            </div>
         </div>
 
     </div>
 
-    <div class="page-footer">
-        DCIT 26 Academic Portfolio <br>
+    <footer class="page-footer">
+        DCIT 26 Academic Portfolio<br>
         Jenefer Z. Ignacio | BSCS - 3A
-    </div>
+    </footer>
 
-    <button type="button" class="scroll-top-btn" id="scrollTopBtn"
-            aria-label="Back to top" title="Back to top">
-        ↑
-    </button>
+</main>
 
-    <script src="folder-effects.js"></script>
+<button class="scroll-top-btn" aria-label="Scroll to top">↑</button>
 
+<script src="folder-effects.js"></script>
 </body>
 </html>
