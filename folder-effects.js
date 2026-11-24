@@ -778,3 +778,27 @@ document.querySelectorAll("[data-certificate]").forEach(img => {
     });
 
 });
+
+
+/* =========================
+   CONNECT CERTIFICATE BUTTONS
+========================= */
+
+document.querySelectorAll("[data-certificate-open]").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const filename = button.dataset.certificateOpen;
+
+        const image = Array.from(
+            document.querySelectorAll("[data-certificate]")
+        ).find(img => img.getAttribute("src") === filename);
+
+        if (image) {
+            image.click();
+        }
+
+    });
+
+});
+
