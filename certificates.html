@@ -6,196 +6,328 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificates</title>
     <link rel="stylesheet" href="folder-style.css">
+
+    <style>
+        /* ===== CERTIFICATES PAGE ===== */
+
+        .certificates-page .page-title {
+            margin-bottom: 12px;
+        }
+
+        .certificates-page .page-description {
+            margin-bottom: 26px;
+        }
+
+        /* Compact certificate list */
+        .certificates-page .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .certificates-page .file-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 16px 20px;
+            min-height: unset;
+            height: auto;
+
+            border-radius: 14px;
+            transition: 0.25s ease;
+        }
+
+        .certificates-page .file-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 125, 194, 0.5);
+        }
+
+        .certificates-page .file-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .certificates-page .file-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .certificates-page .certificate-number {
+            font-size: 0.72rem;
+            letter-spacing: 1.4px;
+            opacity: 0.65;
+        }
+
+        .certificates-page .file-details h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Small category label */
+        .certificates-page .certificate-category {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+
+            margin-top: 5px;
+            padding: 3px 9px;
+
+            border: 1px solid rgba(239, 119, 183, 0.18);
+            border-radius: 20px;
+
+            background: rgba(239, 119, 183, 0.07);
+            color: #c9a7bb;
+
+            font-size: 0.7rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* Button area */
+        .certificates-page .file-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .certificates-page .doc-btn {
+            white-space: nowrap;
+            padding: 9px 16px;
+            font-size: 0.8rem;
+            border-radius: 30px;
+        }
+
+        /* Keep cards clean on smaller screens */
+        @media (max-width: 600px) {
+            .certificates-page .file-card {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .certificates-page .file-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .certificates-page .doc-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .certificates-page .file-details h3 {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="cursor-glow"></div>
-<div class="cursor-orb"></div>
+    <div class="cursor-glow"></div>
+    <div class="cursor-orb"></div>
 
-<main class="notion-container">
+    <main class="notion-container certificates-page">
 
-    <a href="index.html#portfolio" class="back-btn">← Back to Dashboard</a>
+        <a href="index.html#portfolio" class="back-btn">
+            ← Back to Dashboard
+        </a>
 
-    <h1 class="page-title">✧ Certificates</h1>
-    <p class="page-description">
-        Certificates from webinars, seminars, and learning activities
-        that I have participated in.
-    </p>
+        <h1 class="page-title">✧ Certificates</h1>
 
-    <div class="file-list">
+        <p class="page-description">
+            Certificates from webinars, seminars, and learning activities
+            that I have participated in.
+        </p>
 
-        <!-- CERTIFICATE 01 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 01</span>
-                    <h3>Human-Computer Interaction Fundamentals</h3>
-                    <p>Webinar</p>
+        <div class="file-list">
+
+            <!-- CERTIFICATE 01 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 01</span>
+                        <h3>Human-Computer Interaction Fundamentals</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
+
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Human-Computer Interaction Fundamentals.pdf"
+                       data-viewer="pdf"
+                       data-src="Human-Computer Interaction Fundamentals.pdf"
+                       data-title="Human-Computer Interaction Fundamentals">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Human-Computer Interaction Fundamentals.pdf"
-                        data-title="Human-Computer Interaction Fundamentals">
-                    View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 02 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 02</span>
+                        <h3>Design Thinking: Designing for People</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 02 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 02</span>
-                    <h3>Design Thinking: Designing for People</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Design Thinking-Designing for People.pdf"
+                       data-viewer="pdf"
+                       data-src="Design Thinking-Designing for People.pdf"
+                       data-title="Design Thinking: Designing for People">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Design Thinking-Designing for People.pdf"
-                        data-title="Design Thinking: Designing for People">
-                View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 03 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 03</span>
+                        <h3>Evaluating User Satisfaction Through Usability Testing</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 03 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 03</span>
-                    <h3>Evaluating User Satisfaction Through Usability Testing</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Evaluating User Satisfaction Through Usability Testing.pdf"
+                       data-viewer="pdf"
+                       data-src="Evaluating User Satisfaction Through Usability Testing.pdf"
+                       data-title="Evaluating User Satisfaction Through Usability Testing">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Evaluating User Satisfaction Through Usability Testing.pdf"
-                        data-title="Evaluating User Satisfaction Through Usability Testing">
-                    View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 04 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 04</span>
+                        <h3>Neuroinclusive HCI in Higher Education</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 04 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 04</span>
-                    <h3>Neuroinclusive HCI in Higher Education</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Neuroinclusive HCI in Higher Education.pdf"
+                       data-viewer="pdf"
+                       data-src="Neuroinclusive HCI in Higher Education.pdf"
+                       data-title="Neuroinclusive HCI in Higher Education">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Neuroinclusive HCI in Higher Education.pdf"
-                        data-title="Neuroinclusive HCI in Higher Education">
-                    View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 05 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 05</span>
+                        <h3>Common Algorithm Design Strategies</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 05 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 05</span>
-                    <h3>Common Algorithm Design Strategies</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Common Algorithm Design Strategies.pdf"
+                       data-viewer="pdf"
+                       data-src="Common Algorithm Design Strategies.pdf"
+                       data-title="Common Algorithm Design Strategies">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Common Algorithm Design Strategies.pdf"
-                        data-title="Common Algorithm Design Strategies">
-                    View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 06 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 06</span>
+                        <h3>Measuring Algorithm Performance and Efficiency &amp; Optimizing Code for Better Performance</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 06 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 06</span>
-                    <h3>Measuring Algorithm Performance and Efficiency &amp; Optimizing Code for Better Performance</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Measuring Algorithm Performance and Efficiency & Optimizing Code for Better Performance.pdf"
+                       data-viewer="pdf"
+                       data-src="Measuring Algorithm Performance and Efficiency & Optimizing Code for Better Performance.pdf"
+                       data-title="Measuring Algorithm Performance and Efficiency &amp; Optimizing Code for Better Performance">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Measuring Algorithm Performance and Efficiency & Optimizing Code for Better Performance.pdf"
-                        data-title="Measuring Algorithm Performance and Efficiency & Optimizing Code for Better Performance">
-                    View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 07 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 07</span>
+                        <h3>Performance Real-World Applications of Algorithms in Everyday Technology</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 07 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 07</span>
-                    <h3>Performance Real-World Applications of Algorithms in Everyday Technology</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Performance Real-World Applications of Algorithms in Everyday Technology.pdf"
+                       data-viewer="pdf"
+                       data-src="Performance Real-World Applications of Algorithms in Everyday Technology.pdf"
+                       data-title="Performance Real-World Applications of Algorithms in Everyday Technology">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Performance Real-World Applications of Algorithms in Everyday Technology.pdf"
-                        data-title="Performance Real-World Applications of Algorithms in Everyday Technology">
-                    View Certificate
-                </button>
-            </div>
-        </div>
+            <!-- CERTIFICATE 08 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <div class="file-details">
+                        <span class="certificate-number">CERTIFICATE 08</span>
+                        <h3>Graph Algorithms for Network Optimization: Theory and Applications</h3>
+                        <span class="certificate-category">Webinar</span>
+                    </div>
+                </div>
 
-        <!-- CERTIFICATE 08 -->
-        <div class="file-card">
-            <div class="file-info">
-                <div class="file-details">
-                    <span class="certificate-number">CERTIFICATE 08</span>
-                    <h3>Graph Algorithms for Network Optimization: Theory and Applications</h3>
-                    <p>Webinar</p>
+                <div class="file-actions">
+                    <a class="doc-btn primary"
+                       href="Graph Algorithms for Network Optimization-Theory and Applications.pdf"
+                       data-viewer="pdf"
+                       data-src="Graph Algorithms for Network Optimization-Theory and Applications.pdf"
+                       data-title="Graph Algorithms for Network Optimization: Theory and Applications">
+                        View Certificate
+                    </a>
                 </div>
             </div>
 
-            <div class="file-actions">
-                <button class="doc-btn primary"
-                        type="button"
-                        data-certificate-open="Graph Algorithms for Network Optimization-Theory and Applications.pdf"
-                        data-title="Graph Algorithms for Network Optimization: Theory and Applications">
-                    View Certificate
-                </button>
-            </div>
         </div>
 
-    </div>
+    </main>
 
-    <footer class="page-footer">
-        DCIT 26 Academic Portfolio<br>
-        Jenefer Z. Ignacio | BSCS - 3A
+    <footer class="folder-footer">
+        <p>✧ Made with a little bit of magic ✧</p>
     </footer>
 
-</main>
+    <button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+        ↑
+    </button>
 
-<button class="scroll-top-btn" aria-label="Scroll to top">↑</button>
-
-<script src="folder-effects.js"></script>
+    <script src="folder-effects.js"></script>
 
 </body>
 </html>
